@@ -3,68 +3,1174 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AIutino — Capitolo 3</title>
-<style>
-body{font-family:Arial,Helvetica,sans-serif;max-width:760px;margin:0 auto;padding:36px 22px 60px;color:#222;line-height:1.5}
-h1{font-size:30px;margin-bottom:4px} h2{font-size:19px;font-weight:normal;margin-top:0;color:#555}
-label{display:block;font-weight:bold;margin:22px 0 7px}
-input,textarea{width:100%;box-sizing:border-box;padding:12px;border:1px solid #bbb;border-radius:7px;font:inherit}
+<title>AIutino - Capitolo 3</title>
+<style>*{box-sizing:border-box}
+body{margin:0;background:#f4f1eb;font-family:Arial,Helvetica,sans-serif;color:#171717}
+.card{max-width:1100px;margin:18px auto;padding:44px 44px 54px;background:#fff;border-radius:26px}
+h1{margin:0 0 12px;font-size:50px;line-height:1.05;letter-spacing:-1.5px}
+.subtitle{margin:0 0 38px;font-size:25px;line-height:1.25;color:#4d4d4d}
+label{display:block;margin:25px 0 9px;font-size:24px;font-weight:700}
+input,textarea{width:100%;border:1px solid #bdbdbd;border-radius:14px;padding:18px 20px;font:inherit;font-size:21px;color:#222;background:#fff}
 textarea{min-height:120px;resize:vertical}
-button{margin-top:26px;padding:14px 20px;border:0;border-radius:7px;background:#111;color:#fff;font-weight:bold;cursor:pointer;font-size:16px}
-#status{margin-top:16px;font-weight:bold}.note{margin-top:28px;padding:16px;background:#f5f5f5;border-radius:8px}
-</style>
+button{width:100%;margin-top:30px;padding:20px;border:0;border-radius:14px;background:#242424;color:#fff;font-size:23px;font-weight:700;cursor:pointer}
+details{margin-top:54px}
+summary{cursor:pointer;font-size:24px;font-weight:700}
+.prompt{margin-top:18px;padding:22px;background:#f6f6f6;border-radius:12px;white-space:pre-wrap;font-size:15px;line-height:1.5;max-height:600px;overflow:auto}
+.note{margin-top:28px;font-size:20px;color:#666}
+#status{margin-top:14px;font-size:18px;font-weight:700}
+@media(max-width:700px){.card{margin:0;padding:30px 22px 42px;border-radius:0}h1{font-size:38px}.subtitle{font-size:21px}label{font-size:21px}input,textarea{font-size:18px}button{font-size:20px}}</style>
 </head>
 <body>
-<h1>AIUTINO — CAPITOLO 3</h1>
-<h2>FASE 3 — L'ASCOLTO</h2>
-<p>Inserisci i dati del cliente e del venditore, poi copia il prompt completo e incollalo nella tua AI.</p>
+<div class="card">
+<h1>AIutino - Capitolo 3</h1>
+<p class="subtitle">Preparati all’ascolto. Inserisci i dati del cliente e del venditore, poi copia il prompt completo e incollalo nella tua AI.</p>
 
-<label for="cosa">Cosa vende il venditore</label>
+<label for="cosa">COSA VENDE IL VENDITORE</label>
 <input id="cosa" placeholder="Prodotto o servizio">
 
-<label for="ragione">Ragione sociale</label>
+<label for="ragione">RAGIONE SOCIALE</label>
 <input id="ragione" placeholder="Ragione sociale">
 
-<label for="categoria">Categoria</label>
+<label for="categoria">CATEGORIA</label>
 <input id="categoria" placeholder="Categoria">
 
-<label for="localita">Località</label>
+<label for="localita">LOCALITÀ</label>
 <input id="localita" placeholder="Località">
 
-<label for="info">Informazioni emerse durante il primo contatto e/o durante la preparazione</label>
-<textarea id="info" placeholder="Inserisci qui ciò che già sai del cliente. Puoi anche scrivere: inventa tu"></textarea>
+<label for="info">INFORMAZIONI EMERSE DURANTE IL PRIMO CONTATTO E/O DURANTE LA PREPARAZIONE</label>
+<textarea id="info" placeholder="Inserisci qui le informazioni già disponibili sul cliente"></textarea>
 
 <button onclick="copiaPrompt()">COPIA IL PROMPT COMPLETO</button>
 <div id="status"></div>
 
-<div class="note"><strong>Come funziona:</strong><br>
-compila i campi, copia il prompt e incollalo nella tua AI. L'AIutino seguirà la progressione prevista dal Capitolo 3.
+<details>
+<summary>Visualizza il prompt</summary>
+<div class="prompt"># AIutino - Capitolo 3
+
+# FASE 3 — L&#x27;ASCOLTO
+
+---
+
+# DATI DEL VENDITORE
+
+**COSA VENDE:**
+[servizio/prodotto venduto]
+
+---
+
+# DATI DEL CLIENTE
+
+**RAGIONE SOCIALE:**
+[ragione sociale]
+**CATEGORIA:**
+[categoria]
+**LOCALITÀ:**
+[località]
+**INFORMAZIONI EMERSE DURANTE IL PRIMO CONTATTO E/O DURANTE LA PREPARAZIONE:**
+[informazioni disponibili]
+Se l&#x27;utente scrive **&quot;inventa tu&quot;**, inventa informazioni realistiche e coerenti con ragione sociale, categoria e località.
+NON utilizzare informazioni provenienti da conversazioni precedenti se l&#x27;utente chiede esplicitamente di inventare i dati.
+
+---
+
+# OBIETTIVO
+
+Costruisci **UNA SOLA conversazione commerciale realistica** tra venditore e potenziale cliente.
+NON creare tre conversazioni diverse.
+NON creare tre percorsi alternativi.
+NON anticipare la soluzione.
+NON costruire la conversazione a ritroso partendo da ciò che vende il venditore.
+L&#x27;obiettivo NON è vendere.
+L&#x27;obiettivo è arrivare a una **ESIGENZA EMERSA** attraverso l&#x27;ascolto.
+
+---
+
+# FOCUS
+
+Per ogni simulazione utilizza **UN SOLO FOCUS** tra:
+**A CHI · COSA · COME · DOVE · QUANDO**
+Il focus deve essere scelto in modo naturale in base alle informazioni disponibili.
+Deve comparire nella simulazione accanto alla domanda del venditore.
+Esempio:
+**VENDITORE:** In quali momenti della giornata avete normalmente più movimento?
+**(Focus: QUANDO)**
+NON utilizzare tutti e cinque i focus nella stessa simulazione.
+NON trasformare i FATTI in una checklist.
+Il focus serve esclusivamente a scegliere una dimensione della realtà del cliente da esplorare.
+
+---
+
+# PRINCIPIO FONDAMENTALE
+
+La conversazione deve sembrare una conversazione reale tra un venditore e un imprenditore.
+Il venditore deve:
+
+- fare poche domande;
+- ascoltare realmente;
+- cogliere ciò che il cliente dice;
+- approfondire soltanto ciò che merita attenzione;
+- non suggerire la risposta;
+- non cercare artificialmente un problema;
+- non portare il cliente verso il prodotto.
+
+Il cliente deve:
+
+- rispondere spontaneamente;
+- non essere sempre accondiscendente;
+- poter avere dubbi;
+- poter ridimensionare una situazione;
+- poter fornire informazioni parziali;
+- poter introdurre elementi inattesi;
+- poter raccontare qualcosa che inizialmente sembra secondario.
+
+---
+
+# REGOLA PRIORITARIA — NON PILOTARE
+
+La simulazione NON deve essere costruita partendo dal prodotto.
+NON pensare:
+
+&gt; cosa vende il venditore → quale problema può risolvere → quale SWITCH inventare → come arrivare al prodotto.
+
+Devi seguire il percorso opposto:
+
+&gt; cosa racconta il cliente → quale dettaglio merita attenzione → cosa significa per il cliente → quale esigenza emerge.
+
+Il prodotto serve soltanto come contesto per il venditore.
+Non deve diventare la destinazione della conversazione.
+
+---
+
+# TEST DEL PILOTAGGIO
+
+Prima di considerare valida la simulazione verifica:
+
+### TEST 1 — PRODOTTO NASCOSTO
+
+Se non sapessi cosa vende il venditore, costruirei comunque questa stessa conversazione sulla base di ciò che ha raccontato il cliente?
+Se NO → rifai la simulazione.
+
+### TEST 2 — CAMBIO PRODOTTO
+
+Se sostituissi ciò che vende il venditore con un prodotto o servizio completamente diverso, la conversazione potrebbe comunque svilupparsi naturalmente?
+Se NO → rifai la simulazione.
+
+### TEST 3 — SPONTANEITÀ
+
+Il cliente sta raccontando qualcosa che gli interessa realmente oppure sta semplicemente fornendo la risposta necessaria per arrivare alla soluzione?
+Se la seconda è vera → rifai la simulazione.
+
+### TEST 4 — DESTINAZIONE
+
+Lo SWITCH è stato scoperto ascoltando il cliente oppure è stato scelto prima perché utile al venditore?
+Se è stato scelto prima → rifai lo SWITCH.
+
+---
+
+# REGOLA DELLA DIREZIONE
+
+Il venditore può scegliere **cosa ascoltare**.
+NON può scegliere in anticipo **dove deve portare ciò che ascolta**.
+Lo SWITCH deve essere una scoperta.
+NON deve essere una destinazione.
+
+---
+
+# COSA VENDE
+
+Il dato COSA VENDE serve a contestualizzare il venditore.
+Il venditore conosce ciò che vende.
+Tuttavia:
+**COSA VENDE NON DEVE DIVENTARE LA TRACCIA DELLA CONVERSAZIONE.**
+Il venditore NON deve:
+
+- cercare artificialmente un problema compatibile con il prodotto;
+- suggerire una necessità;
+- anticipare la soluzione;
+- scegliere uno SWITCH perché collegabile a una funzione del prodotto;
+- reinterpretare una risposta in funzione del prodotto;
+- amplificare artificialmente un problema;
+- usare la VISION per far immaginare il prodotto;
+- costruire le risposte del cliente in funzione dell&#x27;esigenza finale;
+- proporre il prodotto prima dell&#x27;esigenza emersa.
+
+---
+
+# STRUTTURA OBBLIGATORIA DELLA CONVERSAZIONE
+
+La simulazione deve seguire SEMPRE questa sequenza:
+**FATTI → AUSPICATA → SWITCH → DELUCIDAZIONE → RILANCIO → RIFORMULAZIONE → VISION → ESIGENZA EMERSA → IMPORTANZA PER IL CLIENTE → ESITO**
+La simulazione deve essere **completa**.
+NON fermarti dopo FATTI.
+NON fermarti dopo AUSPICATA.
+NON fermarti dopo SWITCH.
+NON fermarti dopo DELUCIDAZIONE.
+NON fermarti dopo RILANCIO.
+NON fermarti dopo RIFORMULAZIONE.
+NON fermarti dopo VISION.
+Quando viene scelto un focus, completa SEMPRE l&#x27;intera simulazione fino all&#x27;ESITO.
+Il modello deve attendere il lettore **solo dopo aver completato la simulazione**, mai durante la simulazione.
+
+---
+
+# FATTI
+
+*(A chi, cosa, come, dove, quando: fotografo la situazione.)*
+Il venditore parte dalle informazioni disponibili e sceglie UN SOLO FOCUS:
+**A CHI · COSA · COME · DOVE · QUANDO**
+Le cinque dimensioni sono:
+**A CHI** — chi sono i clienti.
+**COSA** — cosa vende, offre o realizza l&#x27;attività.
+**COME** — come lavora, acquisisce clienti, gestisce il servizio o organizza l&#x27;attività.
+**DOVE** — dove opera e da dove arrivano clienti, richieste o opportunità.
+**QUANDO** — in quali momenti, giorni, fasce orarie, periodi della giornata, periodi della settimana, mesi o stagioni l&#x27;attività lavora maggiormente o diversamente; se l&#x27;attività presenta una periodicità uniforme oppure variazioni, picchi, cali o momenti particolari.
+Il QUANDO serve quindi a comprendere **la dimensione temporale dell&#x27;attività**, non a ricostruire necessariamente quando è iniziata una situazione.
+I FATTI NON sono una checklist.
+NON fare cinque domande.
+Scegli una sola dimensione e lascia che la conversazione si sviluppi.
+
+---
+
+# AUSPICATA
+
+*(Verifico se la situazione attuale va bene oppure se il cliente immagina qualcosa di diverso.)*
+Il venditore deve inserire UNA sola domanda.
+Subito prima della risposta del cliente inserisci **DUE ALTERNATIVE POSSIBILI**.
+Le alternative devono essere esclusivamente due diverse formulazioni della stessa domanda.
+Devono essere:
+
+- neutre;
+- equivalenti;
+- aperte;
+- non orientanti;
+- prive di suggerimenti;
+- prive di informazioni nuove.
+
+NON devono suggerire:
+
+- un problema;
+- un bisogno;
+- un obiettivo;
+- una soluzione;
+- una direzione;
+- una risposta utile al prodotto.
+
+Formato obbligatorio:
+**VENDITORE:** [domanda]
+*(Alternative possibili: «...» / «...»)*
+**CLIENTE:** [risposta spontanea]
+
+---
+
+# RISPOSTA SPONTANEA DEL CLIENTE
+
+La risposta del cliente deve essere completamente spontanea.
+NON costruire la risposta sapendo già quale SWITCH vuoi ottenere.
+Prima parla il cliente.
+Poi viene individuato lo SWITCH.
+Il cliente NON deve pronunciare lo SWITCH come concetto didattico.
+NON inserire mai nella sua risposta originale:
+
+- 🔎 SWITCH;
+- parentesi;
+- etichette;
+- commenti;
+- spiegazioni;
+- evidenziazioni;
+- testo aggiuntivo.
+
+Esempio corretto:
+**CLIENTE:** Diciamo che funziona. Quando siamo tutti presi, finisce che ci appuntiamo le cose un po&#x27; dove capita.
+Esempio vietato:
+**CLIENTE:** Diciamo che funziona. Quando siamo tutti presi, 🔎 SWITCH finisce che ci appuntiamo le cose un po&#x27; dove capita.
+
+---
+
+# 🔎 SWITCH
+
+In OGNI simulazione deve esserci UNO SWITCH.
+Lo SWITCH deve essere:
+
+- già contenuto nella risposta del cliente;
+- laterale;
+- indiretto;
+- non evidente;
+- professionale;
+- approfondibile;
+- inizialmente interpretabile in più modi;
+- non immediatamente riconducibile al prodotto;
+- non già coincidente con l&#x27;esigenza finale.
+
+Lo SWITCH NON deve contenere già il problema che il venditore vuole risolvere.
+Lo SWITCH può anche NON trasformarsi in un&#x27;esigenza forte.
+La DELUCIDAZIONE può dimostrare che:
+
+- è importante;
+- è poco importante;
+- significa qualcosa di diverso;
+- non rappresenta un problema;
+- apre una direzione inattesa.
+
+Se lo SWITCH si rivela poco significativo, NON forzarlo.
+
+---
+
+# REGOLA GRAFICA DELLO SWITCH
+
+Il simbolo:
+**🔎 SWITCH**
+deve comparire **ESCLUSIVAMENTE nella sezione SWITCH**.
+NON deve comparire:
+
+- nella risposta originale del cliente;
+- nella domanda del venditore;
+- nei FATTI;
+- nell&#x27;AUSPICATA;
+- nella DELUCIDAZIONE;
+- nel RILANCIO;
+- nella RIFORMULAZIONE;
+- nella VISION;
+- nell&#x27;ESIGENZA EMERSA.
+
+---
+
+# PRESENTAZIONE DELLO SWITCH
+
+Dopo la risposta spontanea del cliente crea:
+
+### 🔎 SWITCH
+
+**CLIENTE:** «🔎 SWITCH: [segmento ESATTO già pronunciato dal cliente]»
+**VENDITORE:** **[domanda di delucidazione]**
+**CLIENTE:** ...
+Il segmento deve essere IDENTICO alle parole già pronunciate dal cliente.
+NON modificarlo.
+NON sintetizzarlo.
+NON renderlo più chiaro.
+NON trasformarlo in una frase equivalente.
+
+---
+
+# TEST DELLO SWITCH
+
+### TEST 1
+
+Se il lettore sapesse già cosa vende il venditore, capirebbe immediatamente che lo SWITCH serve a portare proprio lì?
+Se SÌ → rifai lo SWITCH.
+
+### TEST 2
+
+Se cambiassi completamente il prodotto venduto, lo SWITCH continuerebbe ad avere senso?
+Se NO → rifai lo SWITCH.
+
+### TEST 3
+
+Lo SWITCH potrebbe non trasformarsi in un bisogno?
+Se NO → è probabilmente troppo costruito.
+
+---
+
+# DELUCIDAZIONE
+
+*(Faccio raccontare meglio al cliente ciò che ha appena detto.)*
+La DELUCIDAZIONE deve essere esplorativa.
+Esempi:
+«Mi faccia capire meglio...»
+«Cosa intende quando dice...?»
+«Mi racconti un po&#x27; meglio...»
+«Cosa significa per voi?»
+«Perché dice questo?»
+La domanda deve chiedere al cliente di spiegare.
+NON deve suggerire l&#x27;interpretazione.
+NON deve collegare lo SWITCH al prodotto.
+NON deve contenere già la possibile esigenza.
+La domanda deve essere evidenziata in **grassetto**.
+Se il cliente porta la conversazione in una direzione diversa da quella immaginata, seguire quella direzione.
+
+---
+
+# RILANCIO — OBBLIGATORIO
+
+Il RILANCIO è SEMPRE presente.
+NON è facoltativo.
+Deve comparire dopo la DELUCIDAZIONE e prima della RIFORMULAZIONE.
+Il RILANCIO NON deve essere deciso in anticipo.
+Prima ascolta ciò che emerge dalla DELUCIDAZIONE.
+SOLO DOPO scegli quale tipo di RILANCIO utilizzare.
+Esistono esclusivamente due possibilità:
+**RILANCIO DEL PROBLEMA**
+oppure
+**RILANCIO DELL&#x27;ASPETTO POSITIVO/DISTINTIVO**
+NON utilizzare automaticamente entrambe.
+La scelta deve dipendere esclusivamente da ciò che il cliente ha realmente raccontato.
+
+---
+
+## RILANCIO DEL PROBLEMA
+
+Se dalla DELUCIDAZIONE emerge una difficoltà, un limite, una situazione scomoda, un&#x27;inefficienza, una conseguenza negativa o qualcosa che il cliente vorrebbe diverso, utilizza il RILANCIO DEL PROBLEMA.
+L&#x27;obiettivo è approfondire **quanto incide realmente quella situazione**.
+Esempi:
+**VENDITORE:** «E questa situazione quanto incide sul vostro lavoro?»
+**VENDITORE:** «Quando succede, cosa comporta concretamente per voi?»
+**VENDITORE:** «Quanto pesa questa cosa nella vostra attività?»
+**VENDITORE:** «Che conseguenze ha per voi?»
+Il RILANCIO del problema deve:
+
+- approfondire il peso reale;
+- non aumentare artificialmente il problema;
+- non suggerire una risposta;
+- non anticipare la soluzione;
+- non collegare il problema al prodotto.
+
+Il cliente deve essere libero di dire che il problema:
+
+- pesa molto;
+- pesa poco;
+- è gestibile;
+- ha conseguenze inattese;
+- non è realmente un problema.
+
+---
+
+## RILANCIO DELL&#x27;ASPETTO POSITIVO/DISTINTIVO
+
+Se dalla DELUCIDAZIONE emerge qualcosa che il cliente considera particolare, bello, distintivo o significativo del proprio lavoro, utilizza il RILANCIO DELL&#x27;ASPETTO POSITIVO/DISTINTIVO.
+L&#x27;obiettivo è far raccontare al cliente:
+
+- cosa rende particolare ciò che fa;
+- perché lo fa in quel modo;
+- perché per lui è importante;
+- cosa pensa che apprezzino i suoi clienti;
+- quale valore attribuisce personalmente a quel modo di lavorare.
+
+Esempi:
+**VENDITORE:** «Cosa rende particolare questo modo di lavorare?»
+**VENDITORE:** «Perché per voi è importante farlo in questo modo?»
+**VENDITORE:** «Cosa pensa che apprezzino maggiormente i vostri clienti?»
+**VENDITORE:** «Cosa c&#x27;è dietro questa scelta?»
+**VENDITORE:** «Che valore ha per voi questa caratteristica?»
+Il RILANCIO positivo NON deve diventare adulazione.
+Il venditore NON deve dire:
+«Questa è sicuramente una vostra forza.»
+«È una cosa bellissima.»
+«Siete migliori degli altri.»
+Il venditore deve farlo raccontare al cliente.
+L&#x27;obiettivo è aumentare il coinvolgimento attraverso la verbalizzazione personale del valore, non attraverso complimenti del venditore.
+
+---
+
+# REGOLA DECISIVA SUL RILANCIO
+
+Il modello deve scegliere AUTONOMAMENTE il tipo di RILANCIO.
+NON chiedere al lettore quale RILANCIO utilizzare.
+NON scegliere il RILANCIO in funzione del prodotto.
+NON scegliere il RILANCIO in funzione del punteggio desiderato.
+La logica obbligatoria è:
+**DELUCIDAZIONE → COSA È EMERSO? → SCELTA DEL RILANCIO → RILANCIO**
+Se emerge un problema concreto:
+**→ RILANCIO DEL PROBLEMA**
+Se emerge un aspetto positivo, distintivo o significativo:
+**→ RILANCIO DELL&#x27;ASPETTO POSITIVO/DISTINTIVO**
+RILANCIARE NON significa esagerare.
+**RILANCIARE = APPROFONDIRE.**
+
+---
+
+# PRINCIPIO “FARLO INNAMORARE DI CIÒ CHE FA”
+
+Quando emerge una caratteristica distintiva, il RILANCIO può aiutare il cliente a riconoscere e verbalizzare il valore del proprio lavoro.
+Non deve adulare.
+Non deve convincere.
+Non deve suggerire che ciò che fa sia importante.
+Deve semplicemente permettergli di raccontarlo.
+Il percorso può essere:
+**COSA FA → COME LO FA → COSA LO RENDE PARTICOLARE → PERCHÉ LO FA → CHE VALORE HA PER LUI**
+Questo passaggio NON deve necessariamente portare a un&#x27;esigenza commerciale.
+Può semplicemente far emergere il valore che il cliente attribuisce al proprio lavoro.
+
+---
+
+# RIFORMULAZIONE
+
+*(Restituisco ciò che ho capito.)*
+La RIFORMULAZIONE deve essere breve e aderente a ciò che il cliente ha realmente detto.
+Esempi:
+«Quindi, se ho capito bene...»
+«Mi sembra di capire che...»
+Il concetto fondamentale restituito deve essere evidenziato in **grassetto**.
+La RIFORMULAZIONE NON deve:
+
+- reinterpretare;
+- inventare;
+- restringere;
+- trasformare;
+- collegare artificialmente al prodotto.
+
+Se il cliente ha detto A, il venditore deve riformulare A.
+
+---
+
+# VISION
+
+*(Faccio immaginare al cliente il significato del cambiamento.)*
+La VISION deve partire esclusivamente da ciò che è emerso.
+Deve aiutare il cliente a immaginare cosa significherebbe per lui un cambiamento della situazione.
+Esempi:
+«Che effetto le farebbe?»
+«Cosa significherebbe per voi?»
+«Che differenza farebbe nel vostro lavoro?»
+«Provi a immaginare se questa cosa succedesse davvero...»
+NON utilizzare la VISION per introdurre il prodotto.
+NON dire:
+«Che effetto le farebbe avere un sistema che...»
+«Quanto sarebbe bello avere un servizio che...»
+Il cliente deve immaginare **il cambiamento della propria situazione**, non il prodotto.
+Evidenzia in **grassetto** la parte emotivamente o professionalmente più significativa della risposta del cliente.
+
+---
+
+# ESIGENZA EMERSA
+
+Al termine della simulazione individua con precisione l&#x27;esigenza emersa.
+NON inventare un bisogno.
+NON trasformare una semplice informazione in un&#x27;esigenza.
+NON restringere l&#x27;esigenza per farla coincidere con ciò che vende il venditore.
+L&#x27;esigenza deve essere:
+
+- professionale o commerciale;
+- coerente con quanto raccontato;
+- realmente emersa;
+- formulata in modo breve;
+- utilizzabile successivamente come base per una proposta.
+
+L&#x27;esigenza può essere più ampia del prodotto.
+NON nominare artificialmente il prodotto nell&#x27;esigenza.
+Prima viene l&#x27;esigenza del cliente.
+Solo successivamente si potrà valutare se ciò che vende il venditore è pertinente.
+
+---
+
+# IMPORTANZA PER IL CLIENTE
+
+Indica sempre quanto l&#x27;esigenza emersa appare importante per il cliente sulla base di ciò che ha realmente raccontato.
+Utilizza esclusivamente:
+**⭐ IMPORTANZA PER IL CLIENTE: [X]/10**
+Il punteggio misura esclusivamente:
+**quanto ciò che è emerso appare importante per il cliente.**
+NON misura:
+
+- quanto sia facile vendergli qualcosa;
+- quanto sia interessante per il venditore;
+- quanto il prodotto possa risolverlo;
+- quanto sia pertinente commercialmente.
+
+NON aumentare il punteggio artificialmente.
+NON assegnare un punteggio alto solo perché l&#x27;esigenza può essere collegata a ciò che vende il venditore.
+NON esiste alcun punteggio di PERTINENZA COMMERCIALE.
+NON assegnare:
+**🎯 PERTINENZA COMMERCIALE**
+NON utilizzare:
+**8/8**
+**7/6**
+**9/6**
+**6/9**
+Esiste un solo indicatore:
+**⭐ IMPORTANZA PER IL CLIENTE: X/10**
+
+---
+
+# PROGRESSIONE OBBLIGATORIA DELLE SIMULAZIONI
+
+Il percorso didattico deve seguire OBBLIGATORIAMENTE questa progressione:
+**1ª SIMULAZIONE → 7/10**
+**2ª SIMULAZIONE → 8/10**
+**3ª SIMULAZIONE → 9/10**
+**4ª SIMULAZIONE → 10/10**
+Questa progressione è OBBLIGATORIA.
+NON è consentito:
+
+- diminuire il punteggio;
+- mantenere lo stesso punteggio;
+- saltare un livello;
+- tornare a 7 dopo essere arrivati a 8;
+- tornare a 8 dopo essere arrivati a 9;
+- generare un nuovo cliente prima di aver completato il percorso 7 → 8 → 9 → 10.
+
+Il percorso deve quindi essere sempre:
+**7 → 8 → 9 → 10**
+e MAI:
+**7 → 8 → 7**
+oppure:
+**7 → 9**
+oppure:
+**7 → 8 → 10**
+oppure:
+**7 → 8 → nuovo cliente → 7**
+
+---
+
+# REGOLE DELLO STESSO CLIENTE
+
+Le quattro simulazioni **7 → 8 → 9 → 10 devono essere effettuate sullo STESSO CLIENTE**.
+NON cambiare cliente tra una simulazione e l&#x27;altra.
+NON cambiare ragione sociale.
+NON cambiare categoria.
+NON cambiare località.
+NON ricominciare da FATTI con un cliente diverso.
+Il cliente rimane lo stesso per tutta la progressione.
+A ogni nuova simulazione bisogna però esplorare una possibile esigenza più forte rispetto a quella emersa nella simulazione precedente.
+L&#x27;obiettivo è approfondire progressivamente la conoscenza dello stesso cliente.
+La progressione deve essere:
+**stesso cliente → nuova conversazione → esigenza più forte → punteggio successivo.**
+Le nuove esigenze NON devono essere inventate artificialmente.
+Devono emergere attraverso una nuova conversazione realistica e attraverso l&#x27;ascolto.
+
+---
+
+# PRIMA SIMULAZIONE — OBIETTIVO 7/10
+
+La prima simulazione deve essere completa.
+L&#x27;obiettivo didattico è:
+**⭐ IMPORTANZA PER IL CLIENTE: 7/10**
+La prima simulazione deve rappresentare un&#x27;esigenza reale e significativa, ma non particolarmente forte.
+Il 7/10 deve essere credibile e coerente con ciò che il cliente ha realmente raccontato.
+NON ottenere il 7/10 artificialmente.
+Il RILANCIO è obbligatorio e deve essere scelto autonomamente tra:
+**RILANCIO DEL PROBLEMA**
+oppure
+**RILANCIO DELL&#x27;ASPETTO POSITIVO/DISTINTIVO**
+in base a ciò che emerge dalla DELUCIDAZIONE.
+Al termine della simulazione inserisci:
+**⭐ IMPORTANZA PER IL CLIENTE: 7/10**
+e una breve indicazione coerente con quanto realmente emerso.
+Poi scrivi ESCLUSIVAMENTE:
+**Vuoi simulare invece un&#x27;esigenza più forte?**
+ATTENDI LA RISPOSTA DEL LETTORE.
+NON proporre automaticamente un nuovo cliente.
+NON proporre automaticamente un nuovo focus.
+NON generare automaticamente la seconda simulazione.
+
+---
+
+# SE IL LETTORE RISPONDE NO ALLA PROGRESSIONE
+
+Se il lettore risponde NO alla domanda:
+**«Vuoi simulare invece un&#x27;esigenza più forte?»**
+l&#x27;esercizio termina.
+NON generare altro.
+NON proporre un altro focus.
+NON proporre un altro cliente.
+NON ripetere:
+**A CHI · COSA · COME · DOVE · QUANDO**
+
+---
+
+# SE IL LETTORE RISPONDE SÌ — SECONDA SIMULAZIONE
+
+Genera **UNA SOLA SECONDA SIMULAZIONE COMPLETA**, mantenendo ESATTAMENTE LO STESSO CLIENTE.
+La seconda simulazione deve seguire la stessa struttura:
+**FATTI → AUSPICATA → SWITCH → DELUCIDAZIONE → RILANCIO → RIFORMULAZIONE → VISION → ESIGENZA EMERSA → IMPORTANZA PER IL CLIENTE → ESITO**
+Il RILANCIO è anche in questa simulazione OBBLIGATORIO.
+Il modello decide autonomamente se utilizzare:
+**RILANCIO DEL PROBLEMA**
+oppure
+**RILANCIO DELL&#x27;ASPETTO POSITIVO/DISTINTIVO**
+in base a ciò che emerge dalla DELUCIDAZIONE.
+La seconda simulazione deve far emergere naturalmente un&#x27;esigenza **più forte rispetto alla prima**.
+L&#x27;obiettivo OBBLIGATORIO è:
+**⭐ IMPORTANZA PER IL CLIENTE: 8/10**
+Il punteggio deve essere esattamente 8/10.
+NON assegnare 7/10.
+NON assegnare un punteggio inferiore a 8/10.
+NON saltare direttamente a 9/10 o 10/10.
+NON creare un problema solo per raggiungere 8/10.
+NON trasformare una caratteristica positiva in un bisogno commerciale.
+NON pilotare lo SWITCH verso un&#x27;esigenza prestabilita.
+La maggiore importanza deve essere una conseguenza naturale della conversazione.
+Dopo la seconda simulazione NON chiedere ancora di provare con un altro cliente.
+Scrivi ESCLUSIVAMENTE:
+**Vuoi simulare invece un&#x27;esigenza ancora più forte?**
+ATTENDI LA RISPOSTA DEL LETTORE.
+
+---
+
+# SE IL LETTORE RISPONDE SÌ — TERZA SIMULAZIONE
+
+Genera **UNA SOLA TERZA SIMULAZIONE COMPLETA**, mantenendo ESATTAMENTE LO STESSO CLIENTE.
+La terza simulazione deve seguire la stessa struttura:
+**FATTI → AUSPICATA → SWITCH → DELUCIDAZIONE → RILANCIO → RIFORMULAZIONE → VISION → ESIGENZA EMERSA → IMPORTANZA PER IL CLIENTE → ESITO**
+Il RILANCIO è anche in questa simulazione OBBLIGATORIO.
+Il modello decide autonomamente se utilizzare:
+**RILANCIO DEL PROBLEMA**
+oppure
+**RILANCIO DELL&#x27;ASPETTO POSITIVO/DISTINTIVO**
+in base a ciò che emerge dalla DELUCIDAZIONE.
+La terza simulazione deve far emergere naturalmente un&#x27;esigenza **più forte rispetto alla seconda**.
+L&#x27;obiettivo OBBLIGATORIO è:
+**⭐ IMPORTANZA PER IL CLIENTE: 9/10**
+Il punteggio deve essere esattamente 9/10.
+NON assegnare 8/10.
+NON assegnare 7/10.
+NON saltare direttamente a 10/10.
+NON creare un problema solo per raggiungere 9/10.
+NON trasformare una caratteristica positiva in un bisogno commerciale.
+NON pilotare lo SWITCH verso un&#x27;esigenza prestabilita.
+La maggiore importanza deve essere una conseguenza naturale della conversazione.
+Dopo la terza simulazione NON chiedere ancora di provare con un altro cliente.
+Scrivi ESCLUSIVAMENTE:
+**Vuoi simulare invece un&#x27;esigenza ancora più forte?**
+ATTENDI LA RISPOSTA DEL LETTORE.
+
+---
+
+# SE IL LETTORE RISPONDE SÌ — QUARTA SIMULAZIONE
+
+Genera **UNA SOLA QUARTA SIMULAZIONE COMPLETA**, mantenendo ESATTAMENTE LO STESSO CLIENTE.
+La quarta simulazione deve seguire la stessa struttura:
+**FATTI → AUSPICATA → SWITCH → DELUCIDAZIONE → RILANCIO → RIFORMULAZIONE → VISION → ESIGENZA EMERSA → IMPORTANZA PER IL CLIENTE → ESITO**
+Il RILANCIO è anche in questa simulazione OBBLIGATORIO.
+Il modello decide autonomamente se utilizzare:
+**RILANCIO DEL PROBLEMA**
+oppure
+**RILANCIO DELL&#x27;ASPETTO POSITIVO/DISTINTIVO**
+in base a ciò che emerge dalla DELUCIDAZIONE.
+La quarta simulazione deve far emergere naturalmente un&#x27;esigenza **più forte rispetto alla terza**.
+L&#x27;obiettivo OBBLIGATORIO è:
+**⭐ IMPORTANZA PER IL CLIENTE: 10/10**
+Il punteggio deve essere esattamente 10/10.
+NON assegnare 9/10.
+NON assegnare 8/10.
+NON assegnare 7/10.
+Il 10/10 deve essere credibile e derivare da ciò che il cliente ha realmente raccontato.
+NON creare artificialmente un problema per raggiungere 10/10.
+NON trasformare una caratteristica positiva in un bisogno commerciale.
+NON pilotare lo SWITCH verso un&#x27;esigenza prestabilita.
+La maggiore importanza deve essere una conseguenza naturale della conversazione.
+
+---
+
+# DOPO LA QUARTA SIMULAZIONE — 10/10
+
+Dopo aver completato la quarta simulazione con:
+**⭐ IMPORTANZA PER IL CLIENTE: 10/10**
+il percorso relativo a quel cliente è concluso.
+Dopo la quarta simulazione scrivi ESCLUSIVAMENTE:
+**Vuoi provare con un altro cliente?**
+ATTENDI LA RISPOSTA DEL LETTORE.
+NON generare automaticamente un nuovo cliente.
+NON generare automaticamente una nuova simulazione.
+
+---
+
+# SE IL LETTORE RISPONDE SÌ — NUOVO CLIENTE
+
+Solo dopo aver completato l&#x27;intera progressione:
+**7 → 8 → 9 → 10**
+e solo se il lettore risponde:
+**«Sì»**
+alla domanda:
+**«Vuoi provare con un altro cliente?»**
+puoi iniziare un nuovo ciclo.
+Il nuovo ciclo deve partire da:
+**NUOVO CLIENTE → 7/10**
+e seguire nuovamente:
+**7 → 8 → 9 → 10**
+Il nuovo cliente deve avere:
+
+- nuova ragione sociale;
+- nuova situazione;
+- nuova conversazione;
+- nuovo SWITCH;
+- nuova esigenza.
+
+---
+
+# ESITO DELLA SIMULAZIONE
+
+L&#x27;esito deve essere una **restituzione didattica del dialogo ipotizzato**.
+NON utilizzare mai:
+**«PUOI PROCEDERE»**
+come ordine rivolto al venditore.
+NON dire:
+«Il venditore può procedere.»
+NON decidere al posto del lettore quale azione commerciale intraprendere.
+L&#x27;esito deve descrivere ciò che è emerso dalla simulazione.
+Per la prima simulazione:
+**⭐ IMPORTANZA PER IL CLIENTE: 7/10**
+Poi:
+**Vuoi simulare invece un&#x27;esigenza più forte?**
+Per la seconda simulazione:
+**⭐ IMPORTANZA PER IL CLIENTE: 8/10**
+Poi:
+**Vuoi simulare invece un&#x27;esigenza ancora più forte?**
+Per la terza simulazione:
+**⭐ IMPORTANZA PER IL CLIENTE: 9/10**
+Poi:
+**Vuoi simulare invece un&#x27;esigenza ancora più forte?**
+Per la quarta simulazione:
+**⭐ IMPORTANZA PER IL CLIENTE: 10/10**
+Poi:
+**Vuoi provare con un altro cliente?**
+
+---
+
+# CONTROLLO FINALE OBBLIGATORIO
+
+Prima di restituire ogni simulazione verifica internamente:
+
+### 1. CONTROLLO FOCUS
+
+È stato utilizzato UN SOLO focus?
+**A CHI / COSA / COME / DOVE / QUANDO**
+Se sono stati utilizzati più focus → rifai.
+
+### 2. CONTROLLO SIGNIFICATO DEL QUANDO
+
+Se il focus è QUANDO, la domanda riguarda la periodicità, la stagionalità o la distribuzione temporale dell&#x27;attività?
+Se NO → rifai.
+
+### 3. CONTROLLO COMPLETAMENTO
+
+La simulazione è arrivata fino a:
+**RIFORMULAZIONE → VISION → ESIGENZA → IMPORTANZA → ESITO?**
+Se NO → completa.
+
+### 4. CONTROLLO SWITCH
+
+Esiste UNO SWITCH?
+Se NO → rifai.
+
+### 5. CONTROLLO SIMBOLO
+
+Il simbolo 🔎 SWITCH compare soltanto nella sezione SWITCH?
+Se compare nella risposta originale del cliente → rifai.
+
+### 6. CONTROLLO IDENTITÀ
+
+Il segmento dello SWITCH è identico alle parole realmente pronunciate dal cliente?
+Se NO → rifai.
+
+### 7. CONTROLLO SPONTANEITÀ
+
+La risposta del cliente sembra realmente spontanea?
+Se NO → rifai.
+
+### 8. CONTROLLO PRODOTTO
+
+La conversazione funzionerebbe anche se non sapessi cosa vende il venditore?
+Se NO → rifai.
+
+### 9. CONTROLLO CAMBIO PRODOTTO
+
+La conversazione potrebbe svilupparsi anche con un altro prodotto venduto?
+Se NO → rifai.
+
+### 10. CONTROLLO DELUCIDAZIONE
+
+La DELUCIDAZIONE fa parlare il cliente senza suggerire una risposta?
+Se NO → rifai.
+
+### 11. CONTROLLO RILANCIO
+
+È presente SEMPRE un RILANCIO?
+Se NO → rifai.
+
+### 12. CONTROLLO SCELTA DEL RILANCIO
+
+Il tipo di RILANCIO è stato scelto sulla base di ciò che è realmente emerso dalla DELUCIDAZIONE?
+Se NO → rifai.
+
+### 13. CONTROLLO RILANCIO DEL PROBLEMA
+
+Se il RILANCIO riguarda un problema, approfondisce il peso reale senza aumentarlo artificialmente?
+Se NO → rifai.
+
+### 14. CONTROLLO RILANCIO POSITIVO
+
+Se il RILANCIO riguarda un aspetto positivo/distintivo, permette al cliente di raccontare il valore che attribuisce a ciò che fa?
+Se NO → rifai.
+
+### 15. CONTROLLO RILANCIO NON ADULATORIO
+
+Il venditore non deve dire al cliente che è bravo, speciale o migliore.
+Deve farlo parlare del valore che attribuisce a ciò che fa.
+
+### 16. CONTROLLO RIFORMULAZIONE
+
+La RIFORMULAZIONE restituisce ciò che il cliente ha realmente detto?
+Se NO → rifai.
+
+### 17. CONTROLLO VISION
+
+La VISION fa immaginare il cambiamento della situazione e NON il prodotto?
+Se NO → rifai.
+
+### 18. CONTROLLO ESIGENZA
+
+L&#x27;ESIGENZA EMERSA deriva realmente dalla conversazione?
+Se NO → rifai.
+
+### 19. CONTROLLO PUNTEGGIO
+
+Esiste esclusivamente:
+**⭐ IMPORTANZA PER IL CLIENTE: X/10**
+NON deve esistere:
+**PERTINENZA COMMERCIALE**
+NON deve esistere:
+**8/8**
+NON deve esistere:
+**7/6**
+NON deve esistere:
+**9/6**
+
+### 20. CONTROLLO PROGRESSIONE
+
+Il ciclo corrente segue esattamente:
+**7 → 8 → 9 → 10**
+Se NO → rifai.
+
+### 21. CONTROLLO IDENTITÀ DEL CLIENTE
+
+Le simulazioni 7, 8, 9 e 10 vengono svolte sullo STESSO CLIENTE?
+Se NO → rifai.
+
+### 22. CONTROLLO PRIMA SIMULAZIONE
+
+La prima simulazione ha come obiettivo ESATTAMENTE:
+**7/10**
+
+### 23. CONTROLLO SECONDA SIMULAZIONE
+
+La seconda simulazione viene generata SOLO se il lettore ha risposto sì alla domanda:
+**«Vuoi simulare invece un&#x27;esigenza più forte?»**
+Deve essere UNA SOLA simulazione aggiuntiva.
+Deve mantenere lo stesso cliente.
+Deve avere come risultato:
+**8/10**
+
+### 24. CONTROLLO TERZA SIMULAZIONE
+
+La terza simulazione viene generata SOLO se il lettore ha risposto sì alla domanda:
+**«Vuoi simulare invece un&#x27;esigenza ancora più forte?»**
+Deve essere UNA SOLA simulazione aggiuntiva.
+Deve mantenere lo stesso cliente.
+Deve avere come risultato:
+**9/10**
+
+### 25. CONTROLLO QUARTA SIMULAZIONE
+
+La quarta simulazione viene generata SOLO se il lettore ha risposto sì alla domanda:
+**«Vuoi simulare invece un&#x27;esigenza ancora più forte?»**
+Deve essere UNA SOLA simulazione aggiuntiva.
+Deve mantenere lo stesso cliente.
+Deve avere come risultato:
+**10/10**
+
+### 26. CONTROLLO DOPO IL 10/10
+
+Solo dopo aver raggiunto il 10/10 scrivere:
+**Vuoi provare con un altro cliente?**
+
+### 27. CONTROLLO NUOVO CLIENTE
+
+Un nuovo cliente può essere introdotto SOLO dopo il completamento della sequenza:
+**7 → 8 → 9 → 10**
+Non prima.
+
+### 28. CONTROLLO DI NON REGRESSIONE
+
+Una volta raggiunto un livello, NON tornare mai a un livello precedente.
+È VIETATO:
+**8 → 7**
+**9 → 8**
+**9 → 7**
+**10 → 9**
+La progressione è esclusivamente crescente:
+**7 → 8 → 9 → 10**
+
+---
+
+# FORMATO FINALE OBBLIGATORIO
+
+Restituisci:
+
+# AIutino - Capitolo 3
+
+## FASE 3 — L&#x27;ASCOLTO
+
+---
+
+## DATI DEL VENDITORE
+
+Cosa vende:
+
+---
+
+## DATI DEL CLIENTE
+
+Ragione sociale:
+Categoria:
+Località:
+Informazioni già emerse:
+
+---
+
+## SIMULAZIONE
+
+### FATTI
+
+*(A chi, cosa, come, dove, quando: fotografo la situazione.)*
+**VENDITORE:** ...
+**(Focus: [A CHI / COSA / COME / DOVE / QUANDO])**
+**CLIENTE:** ...
+
+---
+
+### AUSPICATA
+
+*(Va bene così? È sempre stato così? Avete pensato a qualcosa di diverso?)*
+**VENDITORE:** ...
+*(Alternative possibili: «...» / «...»)*
+**CLIENTE:** ...
+
+---
+
+### 🔎 SWITCH
+
+*(Riporta esattamente il dettaglio già pronunciato dal cliente nella risposta precedente che merita di essere approfondito.)*
+**CLIENTE:** «🔎 SWITCH: [segmento esatto già pronunciato dal cliente]»
+**VENDITORE:** **...**
+**CLIENTE:** ...
+
+---
+
+### RILANCIO
+
+*(Il RILANCIO è sempre obbligatorio. Scegli autonomamente se si tratta di RILANCIO DEL PROBLEMA oppure RILANCIO DELL&#x27;ASPETTO POSITIVO/DISTINTIVO in base a ciò che è emerso.)*
+**RILANCIO DEL PROBLEMA**
+oppure
+**RILANCIO DELL&#x27;ASPETTO POSITIVO/DISTINTIVO**
+**VENDITORE:** **...**
+**CLIENTE:** ...
+
+---
+
+### RIFORMULAZIONE
+
+*(Restituisco ciò che ho capito e verifico che sia corretto.)*
+**VENDITORE:** **...**
+**CLIENTE:** ...
+
+---
+
+### VISION
+
+*(Porto il cliente a immaginare non semplicemente “cosa otterrebbe”, ma che cosa significherebbe per lui.)*
+**VENDITORE:** ...
+**CLIENTE:** **...**
+
+---
+
+## ESIGENZA EMERSA
+
+**...**
+
+---
+
+## ⭐ IMPORTANZA PER IL CLIENTE: [X]/10
+
+[Breve indicazione coerente con quanto realmente emerso.]
+
+---
+
+# ESITO DELLA SIMULAZIONE
+
+[Restituzione didattica breve e coerente con il risultato.]
+Se è la prima simulazione:
+**Vuoi simulare invece un&#x27;esigenza più forte?**
+Se è la seconda o la terza simulazione:
+**Vuoi simulare invece un&#x27;esigenza ancora più forte?**
+Se è la quarta simulazione:
+**Vuoi provare con un altro cliente?**
+
+---
+
+# REGOLE FINALI NON NEGOZIABILI
+
+**UNA SOLA CONVERSAZIONE PER SIMULAZIONE.**
+**UNA SIMULAZIONE = UNA CONVERSAZIONE COMPLETA.**
+**UN SOLO FOCUS PER SIMULAZIONE.**
+**NON PILOTARE.**
+**LO SWITCH È UNA SCOPERTA, NON UNA DESTINAZIONE.**
+**🔎 SWITCH COMPARE SOLO NELLA SEZIONE SWITCH.**
+**🔎 SWITCH NON DEVE MAI COMPARIRE NELLA RISPOSTA ORIGINALE DEL CLIENTE.**
+**NELLA SEZIONE SWITCH DEVONO ESSERE RIPORTATE ESATTAMENTE LE PAROLE GIÀ PRONUNCIATE DAL CLIENTE.**
+**LA DELUCIDAZIONE DEVE FAR SPIEGARE IL CLIENTE, NON INTERPRETARLO.**
+**IL RILANCIO È SEMPRE OBBLIGATORIO.**
+**IL MODELLO DECIDE SE FARE IL RILANCIO DEL PROBLEMA O IL RILANCIO DELL&#x27;ASPETTO POSITIVO/DISTINTIVO.**
+**LA SCELTA DEL RILANCIO VIENE FATTA SOLO DOPO AVER ASCOLTATO IL CLIENTE.**
+**IL RILANCIO DEL PROBLEMA APPROFONDISCE QUANTO INCIDE REALMENTE LA SITUAZIONE.**
+**IL RILANCIO POSITIVO FA RACCONTARE AL CLIENTE IL VALORE DI CIÒ CHE CONSIDERA DISTINTIVO.**
+**IL RILANCIO POSITIVO NON DEVE DIVENTARE ADULAZIONE.**
+**IL RILANCIO NON DEVE MAI ESSERE USATO PER AUMENTARE ARTIFICIALMENTE IL PROBLEMA.**
+**LA RIFORMULAZIONE DEVE RESTITUIRE CIÒ CHE IL CLIENTE HA REALMENTE DETTO.**
+**LA VISION DEVE FAR IMMAGINARE IL CAMBIAMENTO, NON IL PRODOTTO.**
+**L&#x27;ESIGENZA DEVE ESSERE QUELLA REALMENTE EMERSA.**
+**NON ESISTE IL PUNTEGGIO DI PERTINENZA COMMERCIALE.**
+**UTILIZZARE SOLO ⭐ IMPORTANZA PER IL CLIENTE: X/10.**
+**LA PRIMA SIMULAZIONE HA OBIETTIVO 7/10.**
+**LA SECONDA SIMULAZIONE HA OBIETTIVO 8/10.**
+**LA TERZA SIMULAZIONE HA OBIETTIVO 9/10.**
+**LA QUARTA SIMULAZIONE HA OBIETTIVO 10/10.**
+**LA PROGRESSIONE È OBBLIGATORIAMENTE 7 → 8 → 9 → 10.**
+**NON È MAI CONSENTITO REGREDIRE A UN PUNTEGGIO PRECEDENTE.**
+**LE QUATTRO SIMULAZIONI DEVONO ESSERE EFFETTUATE SULLO STESSO CLIENTE.**
+**NON CAMBIARE CLIENTE TRA 7, 8, 9 E 10.**
+**OGNI NUOVA SIMULAZIONE DEVE FAR EMERGERE UN&#x27;ESIGENZA PIÙ FORTE DELLA PRECEDENTE.**
+**LA MAGGIORE IMPORTANZA DEVE DERIVARE NATURALMENTE DALLA CONVERSAZIONE.**
+**NON CREARE ARTIFICIALMENTE PROBLEMI PER RAGGIUNGERE IL PUNTEGGIO SUCCESSIVO.**
+**DOPO LA PRIMA SIMULAZIONE CHIEDERE SOLTANTO: “VUOI SIMULARE INVECE UN&#x27;ESIGENZA PIÙ FORTE?”**
+**DOPO LA SECONDA SIMULAZIONE CHIEDERE SOLTANTO: “VUOI SIMULARE INVECE UN&#x27;ESIGENZA ANCORA PIÙ FORTE?”**
+**DOPO LA TERZA SIMULAZIONE CHIEDERE SOLTANTO: “VUOI SIMULARE INVECE UN&#x27;ESIGENZA ANCORA PIÙ FORTE?”**
+**DOPO LA QUARTA SIMULAZIONE CHIEDERE: “VUOI PROVARE CON UN ALTRO CLIENTE?”**
+**SE IL LETTORE DICE NO → FINE DEL PERCORSO.**
+**SE IL LETTORE DICE SÌ DOPO IL 7 → GENERARE LA SIMULAZIONE DA 8, CON LO STESSO CLIENTE.**
+**SE IL LETTORE DICE SÌ DOPO L&#x27;8 → GENERARE LA SIMULAZIONE DA 9, CON LO STESSO CLIENTE.**
+**SE IL LETTORE DICE SÌ DOPO IL 9 → GENERARE LA SIMULAZIONE DA 10, CON LO STESSO CLIENTE.**
+**SE IL LETTORE DICE SÌ DOPO IL 10 → GENERARE UN NUOVO CLIENTE E RIPARTIRE DA 7.**
+**NON GENERARE AUTOMATICAMENTE LA SIMULAZIONE SUCCESSIVA SENZA ATTENDERE LA RISPOSTA DEL LETTORE.**
+**NON GENERARE UN NUOVO CLIENTE PRIMA DEL COMPLETAMENTO DELLA SEQUENZA 7 → 8 → 9 → 10.**
+**NON DIRE MAI “PUOI PROCEDERE” COME ORDINE AL VENDITORE.**
+**L&#x27;ESITO È UNA RESTITUZIONE DIDATTICA DEL DIALOGO IPOTIZZATO.**
+**LA SIMULAZIONE DEVE SEMPRE ESSERE COMPLETATA FINO ALL&#x27;ESITO PRIMA DI ATTENDERE IL LETTORE.**
+**IL RISULTATO FINALE DEVE DERIVARE DA CIÒ CHE IL CLIENTE HA REALMENTE RACCONTATO.**</div>
+</details>
+
+<div class="note">L’AIutino è applicabile a qualsiasi settore della vendita.</div>
 </div>
 
 <script>
-const template = "# AIUTINO — CAPITOLO 3\n\n# FASE 3 — L'ASCOLTO\n\n---\n\n# DATI DEL VENDITORE\n\n**COSA VENDE:**\n[servizio/prodotto venduto]\n\n---\n\n# DATI DEL CLIENTE\n\n**RAGIONE SOCIALE:**\n[ragione sociale]\n**CATEGORIA:**\n[categoria]\n**LOCALITÀ:**\n[località]\n**INFORMAZIONI EMERSE DURANTE IL PRIMO CONTATTO E/O DURANTE LA PREPARAZIONE:**\n[informazioni disponibili]\nSe l'utente scrive **\"inventa tu\"**, inventa informazioni realistiche e coerenti con ragione sociale, categoria e località.\nNON utilizzare informazioni provenienti da conversazioni precedenti se l'utente chiede esplicitamente di inventare i dati.\n\n---\n\n# OBIETTIVO\n\nCostruisci **UNA SOLA conversazione commerciale realistica** tra venditore e potenziale cliente.\nNON creare tre conversazioni diverse.\nNON creare tre percorsi alternativi.\nNON anticipare la soluzione.\nNON costruire la conversazione a ritroso partendo da ciò che vende il venditore.\nL'obiettivo NON è vendere.\nL'obiettivo è arrivare a una **ESIGENZA EMERSA** attraverso l'ascolto.\n\n---\n\n# FOCUS\n\nPer ogni simulazione utilizza **UN SOLO FOCUS** tra:\n**A CHI · COSA · COME · DOVE · QUANDO**\nIl focus deve essere scelto in modo naturale in base alle informazioni disponibili.\nDeve comparire nella simulazione accanto alla domanda del venditore.\nEsempio:\n**VENDITORE:** In quali momenti della giornata avete normalmente più movimento?\n**(Focus: QUANDO)**\nNON utilizzare tutti e cinque i focus nella stessa simulazione.\nNON trasformare i FATTI in una checklist.\nIl focus serve esclusivamente a scegliere una dimensione della realtà del cliente da esplorare.\n\n---\n\n# PRINCIPIO FONDAMENTALE\n\nLa conversazione deve sembrare una conversazione reale tra un venditore e un imprenditore.\nIl venditore deve:\n\n- fare poche domande;\n- ascoltare realmente;\n- cogliere ciò che il cliente dice;\n- approfondire soltanto ciò che merita attenzione;\n- non suggerire la risposta;\n- non cercare artificialmente un problema;\n- non portare il cliente verso il prodotto.\n\nIl cliente deve:\n\n- rispondere spontaneamente;\n- non essere sempre accondiscendente;\n- poter avere dubbi;\n- poter ridimensionare una situazione;\n- poter fornire informazioni parziali;\n- poter introdurre elementi inattesi;\n- poter raccontare qualcosa che inizialmente sembra secondario.\n\n---\n\n# REGOLA PRIORITARIA — NON PILOTARE\n\nLa simulazione NON deve essere costruita partendo dal prodotto.\nNON pensare:\n\n> cosa vende il venditore → quale problema può risolvere → quale SWITCH inventare → come arrivare al prodotto.\n\nDevi seguire il percorso opposto:\n\n> cosa racconta il cliente → quale dettaglio merita attenzione → cosa significa per il cliente → quale esigenza emerge.\n\nIl prodotto serve soltanto come contesto per il venditore.\nNon deve diventare la destinazione della conversazione.\n\n---\n\n# TEST DEL PILOTAGGIO\n\nPrima di considerare valida la simulazione verifica:\n\n### TEST 1 — PRODOTTO NASCOSTO\n\nSe non sapessi cosa vende il venditore, costruirei comunque questa stessa conversazione sulla base di ciò che ha raccontato il cliente?\nSe NO → rifai la simulazione.\n\n### TEST 2 — CAMBIO PRODOTTO\n\nSe sostituissi ciò che vende il venditore con un prodotto o servizio completamente diverso, la conversazione potrebbe comunque svilupparsi naturalmente?\nSe NO → rifai la simulazione.\n\n### TEST 3 — SPONTANEITÀ\n\nIl cliente sta raccontando qualcosa che gli interessa realmente oppure sta semplicemente fornendo la risposta necessaria per arrivare alla soluzione?\nSe la seconda è vera → rifai la simulazione.\n\n### TEST 4 — DESTINAZIONE\n\nLo SWITCH è stato scoperto ascoltando il cliente oppure è stato scelto prima perché utile al venditore?\nSe è stato scelto prima → rifai lo SWITCH.\n\n---\n\n# REGOLA DELLA DIREZIONE\n\nIl venditore può scegliere **cosa ascoltare**.\nNON può scegliere in anticipo **dove deve portare ciò che ascolta**.\nLo SWITCH deve essere una scoperta.\nNON deve essere una destinazione.\n\n---\n\n# COSA VENDE\n\nIl dato COSA VENDE serve a contestualizzare il venditore.\nIl venditore conosce ciò che vende.\nTuttavia:\n**COSA VENDE NON DEVE DIVENTARE LA TRACCIA DELLA CONVERSAZIONE.**\nIl venditore NON deve:\n\n- cercare artificialmente un problema compatibile con il prodotto;\n- suggerire una necessità;\n- anticipare la soluzione;\n- scegliere uno SWITCH perché collegabile a una funzione del prodotto;\n- reinterpretare una risposta in funzione del prodotto;\n- amplificare artificialmente un problema;\n- usare la VISION per far immaginare il prodotto;\n- costruire le risposte del cliente in funzione dell'esigenza finale;\n- proporre il prodotto prima dell'esigenza emersa.\n\n---\n\n# STRUTTURA OBBLIGATORIA DELLA CONVERSAZIONE\n\nLa simulazione deve seguire SEMPRE questa sequenza:\n**FATTI → AUSPICATA → SWITCH → DELUCIDAZIONE → RILANCIO → RIFORMULAZIONE → VISION → ESIGENZA EMERSA → IMPORTANZA PER IL CLIENTE → ESITO**\nLa simulazione deve essere **completa**.\nNON fermarti dopo FATTI.\nNON fermarti dopo AUSPICATA.\nNON fermarti dopo SWITCH.\nNON fermarti dopo DELUCIDAZIONE.\nNON fermarti dopo RILANCIO.\nNON fermarti dopo RIFORMULAZIONE.\nNON fermarti dopo VISION.\nQuando viene scelto un focus, completa SEMPRE l'intera simulazione fino all'ESITO.\nIl modello deve attendere il lettore **solo dopo aver completato la simulazione**, mai durante la simulazione.\n\n---\n\n# FATTI\n\n*(A chi, cosa, come, dove, quando: fotografo la situazione.)*\nIl venditore parte dalle informazioni disponibili e sceglie UN SOLO FOCUS:\n**A CHI · COSA · COME · DOVE · QUANDO**\nLe cinque dimensioni sono:\n**A CHI** — chi sono i clienti.\n**COSA** — cosa vende, offre o realizza l'attività.\n**COME** — come lavora, acquisisce clienti, gestisce il servizio o organizza l'attività.\n**DOVE** — dove opera e da dove arrivano clienti, richieste o opportunità.\n**QUANDO** — in quali momenti, giorni, fasce orarie, periodi della giornata, periodi della settimana, mesi o stagioni l'attività lavora maggiormente o diversamente; se l'attività presenta una periodicità uniforme oppure variazioni, picchi, cali o momenti particolari.\nIl QUANDO serve quindi a comprendere **la dimensione temporale dell'attività**, non a ricostruire necessariamente quando è iniziata una situazione.\nI FATTI NON sono una checklist.\nNON fare cinque domande.\nScegli una sola dimensione e lascia che la conversazione si sviluppi.\n\n---\n\n# AUSPICATA\n\n*(Verifico se la situazione attuale va bene oppure se il cliente immagina qualcosa di diverso.)*\nIl venditore deve inserire UNA sola domanda.\nSubito prima della risposta del cliente inserisci **DUE ALTERNATIVE POSSIBILI**.\nLe alternative devono essere esclusivamente due diverse formulazioni della stessa domanda.\nDevono essere:\n\n- neutre;\n- equivalenti;\n- aperte;\n- non orientanti;\n- prive di suggerimenti;\n- prive di informazioni nuove.\n\nNON devono suggerire:\n\n- un problema;\n- un bisogno;\n- un obiettivo;\n- una soluzione;\n- una direzione;\n- una risposta utile al prodotto.\n\nFormato obbligatorio:\n**VENDITORE:** [domanda]\n*(Alternative possibili: «...» / «...»)*\n**CLIENTE:** [risposta spontanea]\n\n---\n\n# RISPOSTA SPONTANEA DEL CLIENTE\n\nLa risposta del cliente deve essere completamente spontanea.\nNON costruire la risposta sapendo già quale SWITCH vuoi ottenere.\nPrima parla il cliente.\nPoi viene individuato lo SWITCH.\nIl cliente NON deve pronunciare lo SWITCH come concetto didattico.\nNON inserire mai nella sua risposta originale:\n\n- 🔎 SWITCH;\n- parentesi;\n- etichette;\n- commenti;\n- spiegazioni;\n- evidenziazioni;\n- testo aggiuntivo.\n\nEsempio corretto:\n**CLIENTE:** Diciamo che funziona. Quando siamo tutti presi, finisce che ci appuntiamo le cose un po' dove capita.\nEsempio vietato:\n**CLIENTE:** Diciamo che funziona. Quando siamo tutti presi, 🔎 SWITCH finisce che ci appuntiamo le cose un po' dove capita.\n\n---\n\n# 🔎 SWITCH\n\nIn OGNI simulazione deve esserci UNO SWITCH.\nLo SWITCH deve essere:\n\n- già contenuto nella risposta del cliente;\n- laterale;\n- indiretto;\n- non evidente;\n- professionale;\n- approfondibile;\n- inizialmente interpretabile in più modi;\n- non immediatamente riconducibile al prodotto;\n- non già coincidente con l'esigenza finale.\n\nLo SWITCH NON deve contenere già il problema che il venditore vuole risolvere.\nLo SWITCH può anche NON trasformarsi in un'esigenza forte.\nLa DELUCIDAZIONE può dimostrare che:\n\n- è importante;\n- è poco importante;\n- significa qualcosa di diverso;\n- non rappresenta un problema;\n- apre una direzione inattesa.\n\nSe lo SWITCH si rivela poco significativo, NON forzarlo.\n\n---\n\n# REGOLA GRAFICA DELLO SWITCH\n\nIl simbolo:\n**🔎 SWITCH**\ndeve comparire **ESCLUSIVAMENTE nella sezione SWITCH**.\nNON deve comparire:\n\n- nella risposta originale del cliente;\n- nella domanda del venditore;\n- nei FATTI;\n- nell'AUSPICATA;\n- nella DELUCIDAZIONE;\n- nel RILANCIO;\n- nella RIFORMULAZIONE;\n- nella VISION;\n- nell'ESIGENZA EMERSA.\n\n---\n\n# PRESENTAZIONE DELLO SWITCH\n\nDopo la risposta spontanea del cliente crea:\n\n### 🔎 SWITCH\n\n**CLIENTE:** «🔎 SWITCH: [segmento ESATTO già pronunciato dal cliente]»\n**VENDITORE:** **[domanda di delucidazione]**\n**CLIENTE:** ...\nIl segmento deve essere IDENTICO alle parole già pronunciate dal cliente.\nNON modificarlo.\nNON sintetizzarlo.\nNON renderlo più chiaro.\nNON trasformarlo in una frase equivalente.\n\n---\n\n# TEST DELLO SWITCH\n\n### TEST 1\n\nSe il lettore sapesse già cosa vende il venditore, capirebbe immediatamente che lo SWITCH serve a portare proprio lì?\nSe SÌ → rifai lo SWITCH.\n\n### TEST 2\n\nSe cambiassi completamente il prodotto venduto, lo SWITCH continuerebbe ad avere senso?\nSe NO → rifai lo SWITCH.\n\n### TEST 3\n\nLo SWITCH potrebbe non trasformarsi in un bisogno?\nSe NO → è probabilmente troppo costruito.\n\n---\n\n# DELUCIDAZIONE\n\n*(Faccio raccontare meglio al cliente ciò che ha appena detto.)*\nLa DELUCIDAZIONE deve essere esplorativa.\nEsempi:\n«Mi faccia capire meglio...»\n«Cosa intende quando dice...?»\n«Mi racconti un po' meglio...»\n«Cosa significa per voi?»\n«Perché dice questo?»\nLa domanda deve chiedere al cliente di spiegare.\nNON deve suggerire l'interpretazione.\nNON deve collegare lo SWITCH al prodotto.\nNON deve contenere già la possibile esigenza.\nLa domanda deve essere evidenziata in **grassetto**.\nSe il cliente porta la conversazione in una direzione diversa da quella immaginata, seguire quella direzione.\n\n---\n\n# RILANCIO — OBBLIGATORIO\n\nIl RILANCIO è SEMPRE presente.\nNON è facoltativo.\nDeve comparire dopo la DELUCIDAZIONE e prima della RIFORMULAZIONE.\nIl RILANCIO NON deve essere deciso in anticipo.\nPrima ascolta ciò che emerge dalla DELUCIDAZIONE.\nSOLO DOPO scegli quale tipo di RILANCIO utilizzare.\nEsistono esclusivamente due possibilità:\n**RILANCIO DEL PROBLEMA**\noppure\n**RILANCIO DELL'ASPETTO POSITIVO/DISTINTIVO**\nNON utilizzare automaticamente entrambe.\nLa scelta deve dipendere esclusivamente da ciò che il cliente ha realmente raccontato.\n\n---\n\n## RILANCIO DEL PROBLEMA\n\nSe dalla DELUCIDAZIONE emerge una difficoltà, un limite, una situazione scomoda, un'inefficienza, una conseguenza negativa o qualcosa che il cliente vorrebbe diverso, utilizza il RILANCIO DEL PROBLEMA.\nL'obiettivo è approfondire **quanto incide realmente quella situazione**.\nEsempi:\n**VENDITORE:** «E questa situazione quanto incide sul vostro lavoro?»\n**VENDITORE:** «Quando succede, cosa comporta concretamente per voi?»\n**VENDITORE:** «Quanto pesa questa cosa nella vostra attività?»\n**VENDITORE:** «Che conseguenze ha per voi?»\nIl RILANCIO del problema deve:\n\n- approfondire il peso reale;\n- non aumentare artificialmente il problema;\n- non suggerire una risposta;\n- non anticipare la soluzione;\n- non collegare il problema al prodotto.\n\nIl cliente deve essere libero di dire che il problema:\n\n- pesa molto;\n- pesa poco;\n- è gestibile;\n- ha conseguenze inattese;\n- non è realmente un problema.\n\n---\n\n## RILANCIO DELL'ASPETTO POSITIVO/DISTINTIVO\n\nSe dalla DELUCIDAZIONE emerge qualcosa che il cliente considera particolare, bello, distintivo o significativo del proprio lavoro, utilizza il RILANCIO DELL'ASPETTO POSITIVO/DISTINTIVO.\nL'obiettivo è far raccontare al cliente:\n\n- cosa rende particolare ciò che fa;\n- perché lo fa in quel modo;\n- perché per lui è importante;\n- cosa pensa che apprezzino i suoi clienti;\n- quale valore attribuisce personalmente a quel modo di lavorare.\n\nEsempi:\n**VENDITORE:** «Cosa rende particolare questo modo di lavorare?»\n**VENDITORE:** «Perché per voi è importante farlo in questo modo?»\n**VENDITORE:** «Cosa pensa che apprezzino maggiormente i vostri clienti?»\n**VENDITORE:** «Cosa c'è dietro questa scelta?»\n**VENDITORE:** «Che valore ha per voi questa caratteristica?»\nIl RILANCIO positivo NON deve diventare adulazione.\nIl venditore NON deve dire:\n«Questa è sicuramente una vostra forza.»\n«È una cosa bellissima.»\n«Siete migliori degli altri.»\nIl venditore deve farlo raccontare al cliente.\nL'obiettivo è aumentare il coinvolgimento attraverso la verbalizzazione personale del valore, non attraverso complimenti del venditore.\n\n---\n\n# REGOLA DECISIVA SUL RILANCIO\n\nIl modello deve scegliere AUTONOMAMENTE il tipo di RILANCIO.\nNON chiedere al lettore quale RILANCIO utilizzare.\nNON scegliere il RILANCIO in funzione del prodotto.\nNON scegliere il RILANCIO in funzione del punteggio desiderato.\nLa logica obbligatoria è:\n**DELUCIDAZIONE → COSA È EMERSO? → SCELTA DEL RILANCIO → RILANCIO**\nSe emerge un problema concreto:\n**→ RILANCIO DEL PROBLEMA**\nSe emerge un aspetto positivo, distintivo o significativo:\n**→ RILANCIO DELL'ASPETTO POSITIVO/DISTINTIVO**\nRILANCIARE NON significa esagerare.\n**RILANCIARE = APPROFONDIRE.**\n\n---\n\n# PRINCIPIO “FARLO INNAMORARE DI CIÒ CHE FA”\n\nQuando emerge una caratteristica distintiva, il RILANCIO può aiutare il cliente a riconoscere e verbalizzare il valore del proprio lavoro.\nNon deve adulare.\nNon deve convincere.\nNon deve suggerire che ciò che fa sia importante.\nDeve semplicemente permettergli di raccontarlo.\nIl percorso può essere:\n**COSA FA → COME LO FA → COSA LO RENDE PARTICOLARE → PERCHÉ LO FA → CHE VALORE HA PER LUI**\nQuesto passaggio NON deve necessariamente portare a un'esigenza commerciale.\nPuò semplicemente far emergere il valore che il cliente attribuisce al proprio lavoro.\n\n---\n\n# RIFORMULAZIONE\n\n*(Restituisco ciò che ho capito.)*\nLa RIFORMULAZIONE deve essere breve e aderente a ciò che il cliente ha realmente detto.\nEsempi:\n«Quindi, se ho capito bene...»\n«Mi sembra di capire che...»\nIl concetto fondamentale restituito deve essere evidenziato in **grassetto**.\nLa RIFORMULAZIONE NON deve:\n\n- reinterpretare;\n- inventare;\n- restringere;\n- trasformare;\n- collegare artificialmente al prodotto.\n\nSe il cliente ha detto A, il venditore deve riformulare A.\n\n---\n\n# VISION\n\n*(Faccio immaginare al cliente il significato del cambiamento.)*\nLa VISION deve partire esclusivamente da ciò che è emerso.\nDeve aiutare il cliente a immaginare cosa significherebbe per lui un cambiamento della situazione.\nEsempi:\n«Che effetto le farebbe?»\n«Cosa significherebbe per voi?»\n«Che differenza farebbe nel vostro lavoro?»\n«Provi a immaginare se questa cosa succedesse davvero...»\nNON utilizzare la VISION per introdurre il prodotto.\nNON dire:\n«Che effetto le farebbe avere un sistema che...»\n«Quanto sarebbe bello avere un servizio che...»\nIl cliente deve immaginare **il cambiamento della propria situazione**, non il prodotto.\nEvidenzia in **grassetto** la parte emotivamente o professionalmente più significativa della risposta del cliente.\n\n---\n\n# ESIGENZA EMERSA\n\nAl termine della simulazione individua con precisione l'esigenza emersa.\nNON inventare un bisogno.\nNON trasformare una semplice informazione in un'esigenza.\nNON restringere l'esigenza per farla coincidere con ciò che vende il venditore.\nL'esigenza deve essere:\n\n- professionale o commerciale;\n- coerente con quanto raccontato;\n- realmente emersa;\n- formulata in modo breve;\n- utilizzabile successivamente come base per una proposta.\n\nL'esigenza può essere più ampia del prodotto.\nNON nominare artificialmente il prodotto nell'esigenza.\nPrima viene l'esigenza del cliente.\nSolo successivamente si potrà valutare se ciò che vende il venditore è pertinente.\n\n---\n\n# IMPORTANZA PER IL CLIENTE\n\nIndica sempre quanto l'esigenza emersa appare importante per il cliente sulla base di ciò che ha realmente raccontato.\nUtilizza esclusivamente:\n**⭐ IMPORTANZA PER IL CLIENTE: [X]/10**\nIl punteggio misura esclusivamente:\n**quanto ciò che è emerso appare importante per il cliente.**\nNON misura:\n\n- quanto sia facile vendergli qualcosa;\n- quanto sia interessante per il venditore;\n- quanto il prodotto possa risolverlo;\n- quanto sia pertinente commercialmente.\n\nNON aumentare il punteggio artificialmente.\nNON assegnare un punteggio alto solo perché l'esigenza può essere collegata a ciò che vende il venditore.\nNON esiste alcun punteggio di PERTINENZA COMMERCIALE.\nNON assegnare:\n**🎯 PERTINENZA COMMERCIALE**\nNON utilizzare:\n**8/8**\n**7/6**\n**9/6**\n**6/9**\nEsiste un solo indicatore:\n**⭐ IMPORTANZA PER IL CLIENTE: X/10**\n\n---\n\n# PROGRESSIONE OBBLIGATORIA DELLE SIMULAZIONI\n\nIl percorso didattico deve seguire OBBLIGATORIAMENTE questa progressione:\n**1ª SIMULAZIONE → 7/10**\n**2ª SIMULAZIONE → 8/10**\n**3ª SIMULAZIONE → 9/10**\n**4ª SIMULAZIONE → 10/10**\nQuesta progressione è OBBLIGATORIA.\nNON è consentito:\n\n- diminuire il punteggio;\n- mantenere lo stesso punteggio;\n- saltare un livello;\n- tornare a 7 dopo essere arrivati a 8;\n- tornare a 8 dopo essere arrivati a 9;\n- generare un nuovo cliente prima di aver completato il percorso 7 → 8 → 9 → 10.\n\nIl percorso deve quindi essere sempre:\n**7 → 8 → 9 → 10**\ne MAI:\n**7 → 8 → 7**\noppure:\n**7 → 9**\noppure:\n**7 → 8 → 10**\noppure:\n**7 → 8 → nuovo cliente → 7**\n\n---\n\n# REGOLE DELLO STESSO CLIENTE\n\nLe quattro simulazioni **7 → 8 → 9 → 10 devono essere effettuate sullo STESSO CLIENTE**.\nNON cambiare cliente tra una simulazione e l'altra.\nNON cambiare ragione sociale.\nNON cambiare categoria.\nNON cambiare località.\nNON ricominciare da FATTI con un cliente diverso.\nIl cliente rimane lo stesso per tutta la progressione.\nA ogni nuova simulazione bisogna però esplorare una possibile esigenza più forte rispetto a quella emersa nella simulazione precedente.\nL'obiettivo è approfondire progressivamente la conoscenza dello stesso cliente.\nLa progressione deve essere:\n**stesso cliente → nuova conversazione → esigenza più forte → punteggio successivo.**\nLe nuove esigenze NON devono essere inventate artificialmente.\nDevono emergere attraverso una nuova conversazione realistica e attraverso l'ascolto.\n\n---\n\n# PRIMA SIMULAZIONE — OBIETTIVO 7/10\n\nLa prima simulazione deve essere completa.\nL'obiettivo didattico è:\n**⭐ IMPORTANZA PER IL CLIENTE: 7/10**\nLa prima simulazione deve rappresentare un'esigenza reale e significativa, ma non particolarmente forte.\nIl 7/10 deve essere credibile e coerente con ciò che il cliente ha realmente raccontato.\nNON ottenere il 7/10 artificialmente.\nIl RILANCIO è obbligatorio e deve essere scelto autonomamente tra:\n**RILANCIO DEL PROBLEMA**\noppure\n**RILANCIO DELL'ASPETTO POSITIVO/DISTINTIVO**\nin base a ciò che emerge dalla DELUCIDAZIONE.\nAl termine della simulazione inserisci:\n**⭐ IMPORTANZA PER IL CLIENTE: 7/10**\ne una breve indicazione coerente con quanto realmente emerso.\nPoi scrivi ESCLUSIVAMENTE:\n**Vuoi simulare invece un'esigenza più forte?**\nATTENDI LA RISPOSTA DEL LETTORE.\nNON proporre automaticamente un nuovo cliente.\nNON proporre automaticamente un nuovo focus.\nNON generare automaticamente la seconda simulazione.\n\n---\n\n# SE IL LETTORE RISPONDE NO ALLA PROGRESSIONE\n\nSe il lettore risponde NO alla domanda:\n**«Vuoi simulare invece un'esigenza più forte?»**\nl'esercizio termina.\nNON generare altro.\nNON proporre un altro focus.\nNON proporre un altro cliente.\nNON ripetere:\n**A CHI · COSA · COME · DOVE · QUANDO**\n\n---\n\n# SE IL LETTORE RISPONDE SÌ — SECONDA SIMULAZIONE\n\nGenera **UNA SOLA SECONDA SIMULAZIONE COMPLETA**, mantenendo ESATTAMENTE LO STESSO CLIENTE.\nLa seconda simulazione deve seguire la stessa struttura:\n**FATTI → AUSPICATA → SWITCH → DELUCIDAZIONE → RILANCIO → RIFORMULAZIONE → VISION → ESIGENZA EMERSA → IMPORTANZA PER IL CLIENTE → ESITO**\nIl RILANCIO è anche in questa simulazione OBBLIGATORIO.\nIl modello decide autonomamente se utilizzare:\n**RILANCIO DEL PROBLEMA**\noppure\n**RILANCIO DELL'ASPETTO POSITIVO/DISTINTIVO**\nin base a ciò che emerge dalla DELUCIDAZIONE.\nLa seconda simulazione deve far emergere naturalmente un'esigenza **più forte rispetto alla prima**.\nL'obiettivo OBBLIGATORIO è:\n**⭐ IMPORTANZA PER IL CLIENTE: 8/10**\nIl punteggio deve essere esattamente 8/10.\nNON assegnare 7/10.\nNON assegnare un punteggio inferiore a 8/10.\nNON saltare direttamente a 9/10 o 10/10.\nNON creare un problema solo per raggiungere 8/10.\nNON trasformare una caratteristica positiva in un bisogno commerciale.\nNON pilotare lo SWITCH verso un'esigenza prestabilita.\nLa maggiore importanza deve essere una conseguenza naturale della conversazione.\nDopo la seconda simulazione NON chiedere ancora di provare con un altro cliente.\nScrivi ESCLUSIVAMENTE:\n**Vuoi simulare invece un'esigenza ancora più forte?**\nATTENDI LA RISPOSTA DEL LETTORE.\n\n---\n\n# SE IL LETTORE RISPONDE SÌ — TERZA SIMULAZIONE\n\nGenera **UNA SOLA TERZA SIMULAZIONE COMPLETA**, mantenendo ESATTAMENTE LO STESSO CLIENTE.\nLa terza simulazione deve seguire la stessa struttura:\n**FATTI → AUSPICATA → SWITCH → DELUCIDAZIONE → RILANCIO → RIFORMULAZIONE → VISION → ESIGENZA EMERSA → IMPORTANZA PER IL CLIENTE → ESITO**\nIl RILANCIO è anche in questa simulazione OBBLIGATORIO.\nIl modello decide autonomamente se utilizzare:\n**RILANCIO DEL PROBLEMA**\noppure\n**RILANCIO DELL'ASPETTO POSITIVO/DISTINTIVO**\nin base a ciò che emerge dalla DELUCIDAZIONE.\nLa terza simulazione deve far emergere naturalmente un'esigenza **più forte rispetto alla seconda**.\nL'obiettivo OBBLIGATORIO è:\n**⭐ IMPORTANZA PER IL CLIENTE: 9/10**\nIl punteggio deve essere esattamente 9/10.\nNON assegnare 8/10.\nNON assegnare 7/10.\nNON saltare direttamente a 10/10.\nNON creare un problema solo per raggiungere 9/10.\nNON trasformare una caratteristica positiva in un bisogno commerciale.\nNON pilotare lo SWITCH verso un'esigenza prestabilita.\nLa maggiore importanza deve essere una conseguenza naturale della conversazione.\nDopo la terza simulazione NON chiedere ancora di provare con un altro cliente.\nScrivi ESCLUSIVAMENTE:\n**Vuoi simulare invece un'esigenza ancora più forte?**\nATTENDI LA RISPOSTA DEL LETTORE.\n\n---\n\n# SE IL LETTORE RISPONDE SÌ — QUARTA SIMULAZIONE\n\nGenera **UNA SOLA QUARTA SIMULAZIONE COMPLETA**, mantenendo ESATTAMENTE LO STESSO CLIENTE.\nLa quarta simulazione deve seguire la stessa struttura:\n**FATTI → AUSPICATA → SWITCH → DELUCIDAZIONE → RILANCIO → RIFORMULAZIONE → VISION → ESIGENZA EMERSA → IMPORTANZA PER IL CLIENTE → ESITO**\nIl RILANCIO è anche in questa simulazione OBBLIGATORIO.\nIl modello decide autonomamente se utilizzare:\n**RILANCIO DEL PROBLEMA**\noppure\n**RILANCIO DELL'ASPETTO POSITIVO/DISTINTIVO**\nin base a ciò che emerge dalla DELUCIDAZIONE.\nLa quarta simulazione deve far emergere naturalmente un'esigenza **più forte rispetto alla terza**.\nL'obiettivo OBBLIGATORIO è:\n**⭐ IMPORTANZA PER IL CLIENTE: 10/10**\nIl punteggio deve essere esattamente 10/10.\nNON assegnare 9/10.\nNON assegnare 8/10.\nNON assegnare 7/10.\nIl 10/10 deve essere credibile e derivare da ciò che il cliente ha realmente raccontato.\nNON creare artificialmente un problema per raggiungere 10/10.\nNON trasformare una caratteristica positiva in un bisogno commerciale.\nNON pilotare lo SWITCH verso un'esigenza prestabilita.\nLa maggiore importanza deve essere una conseguenza naturale della conversazione.\n\n---\n\n# DOPO LA QUARTA SIMULAZIONE — 10/10\n\nDopo aver completato la quarta simulazione con:\n**⭐ IMPORTANZA PER IL CLIENTE: 10/10**\nil percorso relativo a quel cliente è concluso.\nDopo la quarta simulazione scrivi ESCLUSIVAMENTE:\n**Vuoi provare con un altro cliente?**\nATTENDI LA RISPOSTA DEL LETTORE.\nNON generare automaticamente un nuovo cliente.\nNON generare automaticamente una nuova simulazione.\n\n---\n\n# SE IL LETTORE RISPONDE SÌ — NUOVO CLIENTE\n\nSolo dopo aver completato l'intera progressione:\n**7 → 8 → 9 → 10**\ne solo se il lettore risponde:\n**«Sì»**\nalla domanda:\n**«Vuoi provare con un altro cliente?»**\npuoi iniziare un nuovo ciclo.\nIl nuovo ciclo deve partire da:\n**NUOVO CLIENTE → 7/10**\ne seguire nuovamente:\n**7 → 8 → 9 → 10**\nIl nuovo cliente deve avere:\n\n- nuova ragione sociale;\n- nuova situazione;\n- nuova conversazione;\n- nuovo SWITCH;\n- nuova esigenza.\n\n---\n\n# ESITO DELLA SIMULAZIONE\n\nL'esito deve essere una **restituzione didattica del dialogo ipotizzato**.\nNON utilizzare mai:\n**«PUOI PROCEDERE»**\ncome ordine rivolto al venditore.\nNON dire:\n«Il venditore può procedere.»\nNON decidere al posto del lettore quale azione commerciale intraprendere.\nL'esito deve descrivere ciò che è emerso dalla simulazione.\nPer la prima simulazione:\n**⭐ IMPORTANZA PER IL CLIENTE: 7/10**\nPoi:\n**Vuoi simulare invece un'esigenza più forte?**\nPer la seconda simulazione:\n**⭐ IMPORTANZA PER IL CLIENTE: 8/10**\nPoi:\n**Vuoi simulare invece un'esigenza ancora più forte?**\nPer la terza simulazione:\n**⭐ IMPORTANZA PER IL CLIENTE: 9/10**\nPoi:\n**Vuoi simulare invece un'esigenza ancora più forte?**\nPer la quarta simulazione:\n**⭐ IMPORTANZA PER IL CLIENTE: 10/10**\nPoi:\n**Vuoi provare con un altro cliente?**\n\n---\n\n# CONTROLLO FINALE OBBLIGATORIO\n\nPrima di restituire ogni simulazione verifica internamente:\n\n### 1. CONTROLLO FOCUS\n\nÈ stato utilizzato UN SOLO focus?\n**A CHI / COSA / COME / DOVE / QUANDO**\nSe sono stati utilizzati più focus → rifai.\n\n### 2. CONTROLLO SIGNIFICATO DEL QUANDO\n\nSe il focus è QUANDO, la domanda riguarda la periodicità, la stagionalità o la distribuzione temporale dell'attività?\nSe NO → rifai.\n\n### 3. CONTROLLO COMPLETAMENTO\n\nLa simulazione è arrivata fino a:\n**RIFORMULAZIONE → VISION → ESIGENZA → IMPORTANZA → ESITO?**\nSe NO → completa.\n\n### 4. CONTROLLO SWITCH\n\nEsiste UNO SWITCH?\nSe NO → rifai.\n\n### 5. CONTROLLO SIMBOLO\n\nIl simbolo 🔎 SWITCH compare soltanto nella sezione SWITCH?\nSe compare nella risposta originale del cliente → rifai.\n\n### 6. CONTROLLO IDENTITÀ\n\nIl segmento dello SWITCH è identico alle parole realmente pronunciate dal cliente?\nSe NO → rifai.\n\n### 7. CONTROLLO SPONTANEITÀ\n\nLa risposta del cliente sembra realmente spontanea?\nSe NO → rifai.\n\n### 8. CONTROLLO PRODOTTO\n\nLa conversazione funzionerebbe anche se non sapessi cosa vende il venditore?\nSe NO → rifai.\n\n### 9. CONTROLLO CAMBIO PRODOTTO\n\nLa conversazione potrebbe svilupparsi anche con un altro prodotto venduto?\nSe NO → rifai.\n\n### 10. CONTROLLO DELUCIDAZIONE\n\nLa DELUCIDAZIONE fa parlare il cliente senza suggerire una risposta?\nSe NO → rifai.\n\n### 11. CONTROLLO RILANCIO\n\nÈ presente SEMPRE un RILANCIO?\nSe NO → rifai.\n\n### 12. CONTROLLO SCELTA DEL RILANCIO\n\nIl tipo di RILANCIO è stato scelto sulla base di ciò che è realmente emerso dalla DELUCIDAZIONE?\nSe NO → rifai.\n\n### 13. CONTROLLO RILANCIO DEL PROBLEMA\n\nSe il RILANCIO riguarda un problema, approfondisce il peso reale senza aumentarlo artificialmente?\nSe NO → rifai.\n\n### 14. CONTROLLO RILANCIO POSITIVO\n\nSe il RILANCIO riguarda un aspetto positivo/distintivo, permette al cliente di raccontare il valore che attribuisce a ciò che fa?\nSe NO → rifai.\n\n### 15. CONTROLLO RILANCIO NON ADULATORIO\n\nIl venditore non deve dire al cliente che è bravo, speciale o migliore.\nDeve farlo parlare del valore che attribuisce a ciò che fa.\n\n### 16. CONTROLLO RIFORMULAZIONE\n\nLa RIFORMULAZIONE restituisce ciò che il cliente ha realmente detto?\nSe NO → rifai.\n\n### 17. CONTROLLO VISION\n\nLa VISION fa immaginare il cambiamento della situazione e NON il prodotto?\nSe NO → rifai.\n\n### 18. CONTROLLO ESIGENZA\n\nL'ESIGENZA EMERSA deriva realmente dalla conversazione?\nSe NO → rifai.\n\n### 19. CONTROLLO PUNTEGGIO\n\nEsiste esclusivamente:\n**⭐ IMPORTANZA PER IL CLIENTE: X/10**\nNON deve esistere:\n**PERTINENZA COMMERCIALE**\nNON deve esistere:\n**8/8**\nNON deve esistere:\n**7/6**\nNON deve esistere:\n**9/6**\n\n### 20. CONTROLLO PROGRESSIONE\n\nIl ciclo corrente segue esattamente:\n**7 → 8 → 9 → 10**\nSe NO → rifai.\n\n### 21. CONTROLLO IDENTITÀ DEL CLIENTE\n\nLe simulazioni 7, 8, 9 e 10 vengono svolte sullo STESSO CLIENTE?\nSe NO → rifai.\n\n### 22. CONTROLLO PRIMA SIMULAZIONE\n\nLa prima simulazione ha come obiettivo ESATTAMENTE:\n**7/10**\n\n### 23. CONTROLLO SECONDA SIMULAZIONE\n\nLa seconda simulazione viene generata SOLO se il lettore ha risposto sì alla domanda:\n**«Vuoi simulare invece un'esigenza più forte?»**\nDeve essere UNA SOLA simulazione aggiuntiva.\nDeve mantenere lo stesso cliente.\nDeve avere come risultato:\n**8/10**\n\n### 24. CONTROLLO TERZA SIMULAZIONE\n\nLa terza simulazione viene generata SOLO se il lettore ha risposto sì alla domanda:\n**«Vuoi simulare invece un'esigenza ancora più forte?»**\nDeve essere UNA SOLA simulazione aggiuntiva.\nDeve mantenere lo stesso cliente.\nDeve avere come risultato:\n**9/10**\n\n### 25. CONTROLLO QUARTA SIMULAZIONE\n\nLa quarta simulazione viene generata SOLO se il lettore ha risposto sì alla domanda:\n**«Vuoi simulare invece un'esigenza ancora più forte?»**\nDeve essere UNA SOLA simulazione aggiuntiva.\nDeve mantenere lo stesso cliente.\nDeve avere come risultato:\n**10/10**\n\n### 26. CONTROLLO DOPO IL 10/10\n\nSolo dopo aver raggiunto il 10/10 scrivere:\n**Vuoi provare con un altro cliente?**\n\n### 27. CONTROLLO NUOVO CLIENTE\n\nUn nuovo cliente può essere introdotto SOLO dopo il completamento della sequenza:\n**7 → 8 → 9 → 10**\nNon prima.\n\n### 28. CONTROLLO DI NON REGRESSIONE\n\nUna volta raggiunto un livello, NON tornare mai a un livello precedente.\nÈ VIETATO:\n**8 → 7**\n**9 → 8**\n**9 → 7**\n**10 → 9**\nLa progressione è esclusivamente crescente:\n**7 → 8 → 9 → 10**\n\n---\n\n# FORMATO FINALE OBBLIGATORIO\n\nRestituisci:\n\n# AIUTINO — CAPITOLO 3\n\n## FASE 3 — L'ASCOLTO\n\n---\n\n## DATI DEL VENDITORE\n\nCosa vende:\n\n---\n\n## DATI DEL CLIENTE\n\nRagione sociale:\nCategoria:\nLocalità:\nInformazioni già emerse:\n\n---\n\n## SIMULAZIONE\n\n### FATTI\n\n*(A chi, cosa, come, dove, quando: fotografo la situazione.)*\n**VENDITORE:** ...\n**(Focus: [A CHI / COSA / COME / DOVE / QUANDO])**\n**CLIENTE:** ...\n\n---\n\n### AUSPICATA\n\n*(Va bene così? È sempre stato così? Avete pensato a qualcosa di diverso?)*\n**VENDITORE:** ...\n*(Alternative possibili: «...» / «...»)*\n**CLIENTE:** ...\n\n---\n\n### 🔎 SWITCH\n\n*(Riporta esattamente il dettaglio già pronunciato dal cliente nella risposta precedente che merita di essere approfondito.)*\n**CLIENTE:** «🔎 SWITCH: [segmento esatto già pronunciato dal cliente]»\n**VENDITORE:** **...**\n**CLIENTE:** ...\n\n---\n\n### RILANCIO\n\n*(Il RILANCIO è sempre obbligatorio. Scegli autonomamente se si tratta di RILANCIO DEL PROBLEMA oppure RILANCIO DELL'ASPETTO POSITIVO/DISTINTIVO in base a ciò che è emerso.)*\n**RILANCIO DEL PROBLEMA**\noppure\n**RILANCIO DELL'ASPETTO POSITIVO/DISTINTIVO**\n**VENDITORE:** **...**\n**CLIENTE:** ...\n\n---\n\n### RIFORMULAZIONE\n\n*(Restituisco ciò che ho capito e verifico che sia corretto.)*\n**VENDITORE:** **...**\n**CLIENTE:** ...\n\n---\n\n### VISION\n\n*(Porto il cliente a immaginare non semplicemente “cosa otterrebbe”, ma che cosa significherebbe per lui.)*\n**VENDITORE:** ...\n**CLIENTE:** **...**\n\n---\n\n## ESIGENZA EMERSA\n\n**...**\n\n---\n\n## ⭐ IMPORTANZA PER IL CLIENTE: [X]/10\n\n[Breve indicazione coerente con quanto realmente emerso.]\n\n---\n\n# ESITO DELLA SIMULAZIONE\n\n[Restituzione didattica breve e coerente con il risultato.]\nSe è la prima simulazione:\n**Vuoi simulare invece un'esigenza più forte?**\nSe è la seconda o la terza simulazione:\n**Vuoi simulare invece un'esigenza ancora più forte?**\nSe è la quarta simulazione:\n**Vuoi provare con un altro cliente?**\n\n---\n\n# REGOLE FINALI NON NEGOZIABILI\n\n**UNA SOLA CONVERSAZIONE PER SIMULAZIONE.**\n**UNA SIMULAZIONE = UNA CONVERSAZIONE COMPLETA.**\n**UN SOLO FOCUS PER SIMULAZIONE.**\n**NON PILOTARE.**\n**LO SWITCH È UNA SCOPERTA, NON UNA DESTINAZIONE.**\n**🔎 SWITCH COMPARE SOLO NELLA SEZIONE SWITCH.**\n**🔎 SWITCH NON DEVE MAI COMPARIRE NELLA RISPOSTA ORIGINALE DEL CLIENTE.**\n**NELLA SEZIONE SWITCH DEVONO ESSERE RIPORTATE ESATTAMENTE LE PAROLE GIÀ PRONUNCIATE DAL CLIENTE.**\n**LA DELUCIDAZIONE DEVE FAR SPIEGARE IL CLIENTE, NON INTERPRETARLO.**\n**IL RILANCIO È SEMPRE OBBLIGATORIO.**\n**IL MODELLO DECIDE SE FARE IL RILANCIO DEL PROBLEMA O IL RILANCIO DELL'ASPETTO POSITIVO/DISTINTIVO.**\n**LA SCELTA DEL RILANCIO VIENE FATTA SOLO DOPO AVER ASCOLTATO IL CLIENTE.**\n**IL RILANCIO DEL PROBLEMA APPROFONDISCE QUANTO INCIDE REALMENTE LA SITUAZIONE.**\n**IL RILANCIO POSITIVO FA RACCONTARE AL CLIENTE IL VALORE DI CIÒ CHE CONSIDERA DISTINTIVO.**\n**IL RILANCIO POSITIVO NON DEVE DIVENTARE ADULAZIONE.**\n**IL RILANCIO NON DEVE MAI ESSERE USATO PER AUMENTARE ARTIFICIALMENTE IL PROBLEMA.**\n**LA RIFORMULAZIONE DEVE RESTITUIRE CIÒ CHE IL CLIENTE HA REALMENTE DETTO.**\n**LA VISION DEVE FAR IMMAGINARE IL CAMBIAMENTO, NON IL PRODOTTO.**\n**L'ESIGENZA DEVE ESSERE QUELLA REALMENTE EMERSA.**\n**NON ESISTE IL PUNTEGGIO DI PERTINENZA COMMERCIALE.**\n**UTILIZZARE SOLO ⭐ IMPORTANZA PER IL CLIENTE: X/10.**\n**LA PRIMA SIMULAZIONE HA OBIETTIVO 7/10.**\n**LA SECONDA SIMULAZIONE HA OBIETTIVO 8/10.**\n**LA TERZA SIMULAZIONE HA OBIETTIVO 9/10.**\n**LA QUARTA SIMULAZIONE HA OBIETTIVO 10/10.**\n**LA PROGRESSIONE È OBBLIGATORIAMENTE 7 → 8 → 9 → 10.**\n**NON È MAI CONSENTITO REGREDIRE A UN PUNTEGGIO PRECEDENTE.**\n**LE QUATTRO SIMULAZIONI DEVONO ESSERE EFFETTUATE SULLO STESSO CLIENTE.**\n**NON CAMBIARE CLIENTE TRA 7, 8, 9 E 10.**\n**OGNI NUOVA SIMULAZIONE DEVE FAR EMERGERE UN'ESIGENZA PIÙ FORTE DELLA PRECEDENTE.**\n**LA MAGGIORE IMPORTANZA DEVE DERIVARE NATURALMENTE DALLA CONVERSAZIONE.**\n**NON CREARE ARTIFICIALMENTE PROBLEMI PER RAGGIUNGERE IL PUNTEGGIO SUCCESSIVO.**\n**DOPO LA PRIMA SIMULAZIONE CHIEDERE SOLTANTO: “VUOI SIMULARE INVECE UN'ESIGENZA PIÙ FORTE?”**\n**DOPO LA SECONDA SIMULAZIONE CHIEDERE SOLTANTO: “VUOI SIMULARE INVECE UN'ESIGENZA ANCORA PIÙ FORTE?”**\n**DOPO LA TERZA SIMULAZIONE CHIEDERE SOLTANTO: “VUOI SIMULARE INVECE UN'ESIGENZA ANCORA PIÙ FORTE?”**\n**DOPO LA QUARTA SIMULAZIONE CHIEDERE: “VUOI PROVARE CON UN ALTRO CLIENTE?”**\n**SE IL LETTORE DICE NO → FINE DEL PERCORSO.**\n**SE IL LETTORE DICE SÌ DOPO IL 7 → GENERARE LA SIMULAZIONE DA 8, CON LO STESSO CLIENTE.**\n**SE IL LETTORE DICE SÌ DOPO L'8 → GENERARE LA SIMULAZIONE DA 9, CON LO STESSO CLIENTE.**\n**SE IL LETTORE DICE SÌ DOPO IL 9 → GENERARE LA SIMULAZIONE DA 10, CON LO STESSO CLIENTE.**\n**SE IL LETTORE DICE SÌ DOPO IL 10 → GENERARE UN NUOVO CLIENTE E RIPARTIRE DA 7.**\n**NON GENERARE AUTOMATICAMENTE LA SIMULAZIONE SUCCESSIVA SENZA ATTENDERE LA RISPOSTA DEL LETTORE.**\n**NON GENERARE UN NUOVO CLIENTE PRIMA DEL COMPLETAMENTO DELLA SEQUENZA 7 → 8 → 9 → 10.**\n**NON DIRE MAI “PUOI PROCEDERE” COME ORDINE AL VENDITORE.**\n**L'ESITO È UNA RESTITUZIONE DIDATTICA DEL DIALOGO IPOTIZZATO.**\n**LA SIMULAZIONE DEVE SEMPRE ESSERE COMPLETATA FINO ALL'ESITO PRIMA DI ATTENDERE IL LETTORE.**\n**IL RISULTATO FINALE DEVE DERIVARE DA CIÒ CHE IL CLIENTE HA REALMENTE RACCONTATO.**";
-
+const template="# AIutino - Capitolo 3\n\n# FASE 3 — L'ASCOLTO\n\n---\n\n# DATI DEL VENDITORE\n\n**COSA VENDE:**\n[servizio/prodotto venduto]\n\n---\n\n# DATI DEL CLIENTE\n\n**RAGIONE SOCIALE:**\n[ragione sociale]\n**CATEGORIA:**\n[categoria]\n**LOCALITÀ:**\n[località]\n**INFORMAZIONI EMERSE DURANTE IL PRIMO CONTATTO E/O DURANTE LA PREPARAZIONE:**\n[informazioni disponibili]\nSe l'utente scrive **\"inventa tu\"**, inventa informazioni realistiche e coerenti con ragione sociale, categoria e località.\nNON utilizzare informazioni provenienti da conversazioni precedenti se l'utente chiede esplicitamente di inventare i dati.\n\n---\n\n# OBIETTIVO\n\nCostruisci **UNA SOLA conversazione commerciale realistica** tra venditore e potenziale cliente.\nNON creare tre conversazioni diverse.\nNON creare tre percorsi alternativi.\nNON anticipare la soluzione.\nNON costruire la conversazione a ritroso partendo da ciò che vende il venditore.\nL'obiettivo NON è vendere.\nL'obiettivo è arrivare a una **ESIGENZA EMERSA** attraverso l'ascolto.\n\n---\n\n# FOCUS\n\nPer ogni simulazione utilizza **UN SOLO FOCUS** tra:\n**A CHI · COSA · COME · DOVE · QUANDO**\nIl focus deve essere scelto in modo naturale in base alle informazioni disponibili.\nDeve comparire nella simulazione accanto alla domanda del venditore.\nEsempio:\n**VENDITORE:** In quali momenti della giornata avete normalmente più movimento?\n**(Focus: QUANDO)**\nNON utilizzare tutti e cinque i focus nella stessa simulazione.\nNON trasformare i FATTI in una checklist.\nIl focus serve esclusivamente a scegliere una dimensione della realtà del cliente da esplorare.\n\n---\n\n# PRINCIPIO FONDAMENTALE\n\nLa conversazione deve sembrare una conversazione reale tra un venditore e un imprenditore.\nIl venditore deve:\n\n- fare poche domande;\n- ascoltare realmente;\n- cogliere ciò che il cliente dice;\n- approfondire soltanto ciò che merita attenzione;\n- non suggerire la risposta;\n- non cercare artificialmente un problema;\n- non portare il cliente verso il prodotto.\n\nIl cliente deve:\n\n- rispondere spontaneamente;\n- non essere sempre accondiscendente;\n- poter avere dubbi;\n- poter ridimensionare una situazione;\n- poter fornire informazioni parziali;\n- poter introdurre elementi inattesi;\n- poter raccontare qualcosa che inizialmente sembra secondario.\n\n---\n\n# REGOLA PRIORITARIA — NON PILOTARE\n\nLa simulazione NON deve essere costruita partendo dal prodotto.\nNON pensare:\n\n> cosa vende il venditore → quale problema può risolvere → quale SWITCH inventare → come arrivare al prodotto.\n\nDevi seguire il percorso opposto:\n\n> cosa racconta il cliente → quale dettaglio merita attenzione → cosa significa per il cliente → quale esigenza emerge.\n\nIl prodotto serve soltanto come contesto per il venditore.\nNon deve diventare la destinazione della conversazione.\n\n---\n\n# TEST DEL PILOTAGGIO\n\nPrima di considerare valida la simulazione verifica:\n\n### TEST 1 — PRODOTTO NASCOSTO\n\nSe non sapessi cosa vende il venditore, costruirei comunque questa stessa conversazione sulla base di ciò che ha raccontato il cliente?\nSe NO → rifai la simulazione.\n\n### TEST 2 — CAMBIO PRODOTTO\n\nSe sostituissi ciò che vende il venditore con un prodotto o servizio completamente diverso, la conversazione potrebbe comunque svilupparsi naturalmente?\nSe NO → rifai la simulazione.\n\n### TEST 3 — SPONTANEITÀ\n\nIl cliente sta raccontando qualcosa che gli interessa realmente oppure sta semplicemente fornendo la risposta necessaria per arrivare alla soluzione?\nSe la seconda è vera → rifai la simulazione.\n\n### TEST 4 — DESTINAZIONE\n\nLo SWITCH è stato scoperto ascoltando il cliente oppure è stato scelto prima perché utile al venditore?\nSe è stato scelto prima → rifai lo SWITCH.\n\n---\n\n# REGOLA DELLA DIREZIONE\n\nIl venditore può scegliere **cosa ascoltare**.\nNON può scegliere in anticipo **dove deve portare ciò che ascolta**.\nLo SWITCH deve essere una scoperta.\nNON deve essere una destinazione.\n\n---\n\n# COSA VENDE\n\nIl dato COSA VENDE serve a contestualizzare il venditore.\nIl venditore conosce ciò che vende.\nTuttavia:\n**COSA VENDE NON DEVE DIVENTARE LA TRACCIA DELLA CONVERSAZIONE.**\nIl venditore NON deve:\n\n- cercare artificialmente un problema compatibile con il prodotto;\n- suggerire una necessità;\n- anticipare la soluzione;\n- scegliere uno SWITCH perché collegabile a una funzione del prodotto;\n- reinterpretare una risposta in funzione del prodotto;\n- amplificare artificialmente un problema;\n- usare la VISION per far immaginare il prodotto;\n- costruire le risposte del cliente in funzione dell'esigenza finale;\n- proporre il prodotto prima dell'esigenza emersa.\n\n---\n\n# STRUTTURA OBBLIGATORIA DELLA CONVERSAZIONE\n\nLa simulazione deve seguire SEMPRE questa sequenza:\n**FATTI → AUSPICATA → SWITCH → DELUCIDAZIONE → RILANCIO → RIFORMULAZIONE → VISION → ESIGENZA EMERSA → IMPORTANZA PER IL CLIENTE → ESITO**\nLa simulazione deve essere **completa**.\nNON fermarti dopo FATTI.\nNON fermarti dopo AUSPICATA.\nNON fermarti dopo SWITCH.\nNON fermarti dopo DELUCIDAZIONE.\nNON fermarti dopo RILANCIO.\nNON fermarti dopo RIFORMULAZIONE.\nNON fermarti dopo VISION.\nQuando viene scelto un focus, completa SEMPRE l'intera simulazione fino all'ESITO.\nIl modello deve attendere il lettore **solo dopo aver completato la simulazione**, mai durante la simulazione.\n\n---\n\n# FATTI\n\n*(A chi, cosa, come, dove, quando: fotografo la situazione.)*\nIl venditore parte dalle informazioni disponibili e sceglie UN SOLO FOCUS:\n**A CHI · COSA · COME · DOVE · QUANDO**\nLe cinque dimensioni sono:\n**A CHI** — chi sono i clienti.\n**COSA** — cosa vende, offre o realizza l'attività.\n**COME** — come lavora, acquisisce clienti, gestisce il servizio o organizza l'attività.\n**DOVE** — dove opera e da dove arrivano clienti, richieste o opportunità.\n**QUANDO** — in quali momenti, giorni, fasce orarie, periodi della giornata, periodi della settimana, mesi o stagioni l'attività lavora maggiormente o diversamente; se l'attività presenta una periodicità uniforme oppure variazioni, picchi, cali o momenti particolari.\nIl QUANDO serve quindi a comprendere **la dimensione temporale dell'attività**, non a ricostruire necessariamente quando è iniziata una situazione.\nI FATTI NON sono una checklist.\nNON fare cinque domande.\nScegli una sola dimensione e lascia che la conversazione si sviluppi.\n\n---\n\n# AUSPICATA\n\n*(Verifico se la situazione attuale va bene oppure se il cliente immagina qualcosa di diverso.)*\nIl venditore deve inserire UNA sola domanda.\nSubito prima della risposta del cliente inserisci **DUE ALTERNATIVE POSSIBILI**.\nLe alternative devono essere esclusivamente due diverse formulazioni della stessa domanda.\nDevono essere:\n\n- neutre;\n- equivalenti;\n- aperte;\n- non orientanti;\n- prive di suggerimenti;\n- prive di informazioni nuove.\n\nNON devono suggerire:\n\n- un problema;\n- un bisogno;\n- un obiettivo;\n- una soluzione;\n- una direzione;\n- una risposta utile al prodotto.\n\nFormato obbligatorio:\n**VENDITORE:** [domanda]\n*(Alternative possibili: «...» / «...»)*\n**CLIENTE:** [risposta spontanea]\n\n---\n\n# RISPOSTA SPONTANEA DEL CLIENTE\n\nLa risposta del cliente deve essere completamente spontanea.\nNON costruire la risposta sapendo già quale SWITCH vuoi ottenere.\nPrima parla il cliente.\nPoi viene individuato lo SWITCH.\nIl cliente NON deve pronunciare lo SWITCH come concetto didattico.\nNON inserire mai nella sua risposta originale:\n\n- 🔎 SWITCH;\n- parentesi;\n- etichette;\n- commenti;\n- spiegazioni;\n- evidenziazioni;\n- testo aggiuntivo.\n\nEsempio corretto:\n**CLIENTE:** Diciamo che funziona. Quando siamo tutti presi, finisce che ci appuntiamo le cose un po' dove capita.\nEsempio vietato:\n**CLIENTE:** Diciamo che funziona. Quando siamo tutti presi, 🔎 SWITCH finisce che ci appuntiamo le cose un po' dove capita.\n\n---\n\n# 🔎 SWITCH\n\nIn OGNI simulazione deve esserci UNO SWITCH.\nLo SWITCH deve essere:\n\n- già contenuto nella risposta del cliente;\n- laterale;\n- indiretto;\n- non evidente;\n- professionale;\n- approfondibile;\n- inizialmente interpretabile in più modi;\n- non immediatamente riconducibile al prodotto;\n- non già coincidente con l'esigenza finale.\n\nLo SWITCH NON deve contenere già il problema che il venditore vuole risolvere.\nLo SWITCH può anche NON trasformarsi in un'esigenza forte.\nLa DELUCIDAZIONE può dimostrare che:\n\n- è importante;\n- è poco importante;\n- significa qualcosa di diverso;\n- non rappresenta un problema;\n- apre una direzione inattesa.\n\nSe lo SWITCH si rivela poco significativo, NON forzarlo.\n\n---\n\n# REGOLA GRAFICA DELLO SWITCH\n\nIl simbolo:\n**🔎 SWITCH**\ndeve comparire **ESCLUSIVAMENTE nella sezione SWITCH**.\nNON deve comparire:\n\n- nella risposta originale del cliente;\n- nella domanda del venditore;\n- nei FATTI;\n- nell'AUSPICATA;\n- nella DELUCIDAZIONE;\n- nel RILANCIO;\n- nella RIFORMULAZIONE;\n- nella VISION;\n- nell'ESIGENZA EMERSA.\n\n---\n\n# PRESENTAZIONE DELLO SWITCH\n\nDopo la risposta spontanea del cliente crea:\n\n### 🔎 SWITCH\n\n**CLIENTE:** «🔎 SWITCH: [segmento ESATTO già pronunciato dal cliente]»\n**VENDITORE:** **[domanda di delucidazione]**\n**CLIENTE:** ...\nIl segmento deve essere IDENTICO alle parole già pronunciate dal cliente.\nNON modificarlo.\nNON sintetizzarlo.\nNON renderlo più chiaro.\nNON trasformarlo in una frase equivalente.\n\n---\n\n# TEST DELLO SWITCH\n\n### TEST 1\n\nSe il lettore sapesse già cosa vende il venditore, capirebbe immediatamente che lo SWITCH serve a portare proprio lì?\nSe SÌ → rifai lo SWITCH.\n\n### TEST 2\n\nSe cambiassi completamente il prodotto venduto, lo SWITCH continuerebbe ad avere senso?\nSe NO → rifai lo SWITCH.\n\n### TEST 3\n\nLo SWITCH potrebbe non trasformarsi in un bisogno?\nSe NO → è probabilmente troppo costruito.\n\n---\n\n# DELUCIDAZIONE\n\n*(Faccio raccontare meglio al cliente ciò che ha appena detto.)*\nLa DELUCIDAZIONE deve essere esplorativa.\nEsempi:\n«Mi faccia capire meglio...»\n«Cosa intende quando dice...?»\n«Mi racconti un po' meglio...»\n«Cosa significa per voi?»\n«Perché dice questo?»\nLa domanda deve chiedere al cliente di spiegare.\nNON deve suggerire l'interpretazione.\nNON deve collegare lo SWITCH al prodotto.\nNON deve contenere già la possibile esigenza.\nLa domanda deve essere evidenziata in **grassetto**.\nSe il cliente porta la conversazione in una direzione diversa da quella immaginata, seguire quella direzione.\n\n---\n\n# RILANCIO — OBBLIGATORIO\n\nIl RILANCIO è SEMPRE presente.\nNON è facoltativo.\nDeve comparire dopo la DELUCIDAZIONE e prima della RIFORMULAZIONE.\nIl RILANCIO NON deve essere deciso in anticipo.\nPrima ascolta ciò che emerge dalla DELUCIDAZIONE.\nSOLO DOPO scegli quale tipo di RILANCIO utilizzare.\nEsistono esclusivamente due possibilità:\n**RILANCIO DEL PROBLEMA**\noppure\n**RILANCIO DELL'ASPETTO POSITIVO/DISTINTIVO**\nNON utilizzare automaticamente entrambe.\nLa scelta deve dipendere esclusivamente da ciò che il cliente ha realmente raccontato.\n\n---\n\n## RILANCIO DEL PROBLEMA\n\nSe dalla DELUCIDAZIONE emerge una difficoltà, un limite, una situazione scomoda, un'inefficienza, una conseguenza negativa o qualcosa che il cliente vorrebbe diverso, utilizza il RILANCIO DEL PROBLEMA.\nL'obiettivo è approfondire **quanto incide realmente quella situazione**.\nEsempi:\n**VENDITORE:** «E questa situazione quanto incide sul vostro lavoro?»\n**VENDITORE:** «Quando succede, cosa comporta concretamente per voi?»\n**VENDITORE:** «Quanto pesa questa cosa nella vostra attività?»\n**VENDITORE:** «Che conseguenze ha per voi?»\nIl RILANCIO del problema deve:\n\n- approfondire il peso reale;\n- non aumentare artificialmente il problema;\n- non suggerire una risposta;\n- non anticipare la soluzione;\n- non collegare il problema al prodotto.\n\nIl cliente deve essere libero di dire che il problema:\n\n- pesa molto;\n- pesa poco;\n- è gestibile;\n- ha conseguenze inattese;\n- non è realmente un problema.\n\n---\n\n## RILANCIO DELL'ASPETTO POSITIVO/DISTINTIVO\n\nSe dalla DELUCIDAZIONE emerge qualcosa che il cliente considera particolare, bello, distintivo o significativo del proprio lavoro, utilizza il RILANCIO DELL'ASPETTO POSITIVO/DISTINTIVO.\nL'obiettivo è far raccontare al cliente:\n\n- cosa rende particolare ciò che fa;\n- perché lo fa in quel modo;\n- perché per lui è importante;\n- cosa pensa che apprezzino i suoi clienti;\n- quale valore attribuisce personalmente a quel modo di lavorare.\n\nEsempi:\n**VENDITORE:** «Cosa rende particolare questo modo di lavorare?»\n**VENDITORE:** «Perché per voi è importante farlo in questo modo?»\n**VENDITORE:** «Cosa pensa che apprezzino maggiormente i vostri clienti?»\n**VENDITORE:** «Cosa c'è dietro questa scelta?»\n**VENDITORE:** «Che valore ha per voi questa caratteristica?»\nIl RILANCIO positivo NON deve diventare adulazione.\nIl venditore NON deve dire:\n«Questa è sicuramente una vostra forza.»\n«È una cosa bellissima.»\n«Siete migliori degli altri.»\nIl venditore deve farlo raccontare al cliente.\nL'obiettivo è aumentare il coinvolgimento attraverso la verbalizzazione personale del valore, non attraverso complimenti del venditore.\n\n---\n\n# REGOLA DECISIVA SUL RILANCIO\n\nIl modello deve scegliere AUTONOMAMENTE il tipo di RILANCIO.\nNON chiedere al lettore quale RILANCIO utilizzare.\nNON scegliere il RILANCIO in funzione del prodotto.\nNON scegliere il RILANCIO in funzione del punteggio desiderato.\nLa logica obbligatoria è:\n**DELUCIDAZIONE → COSA È EMERSO? → SCELTA DEL RILANCIO → RILANCIO**\nSe emerge un problema concreto:\n**→ RILANCIO DEL PROBLEMA**\nSe emerge un aspetto positivo, distintivo o significativo:\n**→ RILANCIO DELL'ASPETTO POSITIVO/DISTINTIVO**\nRILANCIARE NON significa esagerare.\n**RILANCIARE = APPROFONDIRE.**\n\n---\n\n# PRINCIPIO “FARLO INNAMORARE DI CIÒ CHE FA”\n\nQuando emerge una caratteristica distintiva, il RILANCIO può aiutare il cliente a riconoscere e verbalizzare il valore del proprio lavoro.\nNon deve adulare.\nNon deve convincere.\nNon deve suggerire che ciò che fa sia importante.\nDeve semplicemente permettergli di raccontarlo.\nIl percorso può essere:\n**COSA FA → COME LO FA → COSA LO RENDE PARTICOLARE → PERCHÉ LO FA → CHE VALORE HA PER LUI**\nQuesto passaggio NON deve necessariamente portare a un'esigenza commerciale.\nPuò semplicemente far emergere il valore che il cliente attribuisce al proprio lavoro.\n\n---\n\n# RIFORMULAZIONE\n\n*(Restituisco ciò che ho capito.)*\nLa RIFORMULAZIONE deve essere breve e aderente a ciò che il cliente ha realmente detto.\nEsempi:\n«Quindi, se ho capito bene...»\n«Mi sembra di capire che...»\nIl concetto fondamentale restituito deve essere evidenziato in **grassetto**.\nLa RIFORMULAZIONE NON deve:\n\n- reinterpretare;\n- inventare;\n- restringere;\n- trasformare;\n- collegare artificialmente al prodotto.\n\nSe il cliente ha detto A, il venditore deve riformulare A.\n\n---\n\n# VISION\n\n*(Faccio immaginare al cliente il significato del cambiamento.)*\nLa VISION deve partire esclusivamente da ciò che è emerso.\nDeve aiutare il cliente a immaginare cosa significherebbe per lui un cambiamento della situazione.\nEsempi:\n«Che effetto le farebbe?»\n«Cosa significherebbe per voi?»\n«Che differenza farebbe nel vostro lavoro?»\n«Provi a immaginare se questa cosa succedesse davvero...»\nNON utilizzare la VISION per introdurre il prodotto.\nNON dire:\n«Che effetto le farebbe avere un sistema che...»\n«Quanto sarebbe bello avere un servizio che...»\nIl cliente deve immaginare **il cambiamento della propria situazione**, non il prodotto.\nEvidenzia in **grassetto** la parte emotivamente o professionalmente più significativa della risposta del cliente.\n\n---\n\n# ESIGENZA EMERSA\n\nAl termine della simulazione individua con precisione l'esigenza emersa.\nNON inventare un bisogno.\nNON trasformare una semplice informazione in un'esigenza.\nNON restringere l'esigenza per farla coincidere con ciò che vende il venditore.\nL'esigenza deve essere:\n\n- professionale o commerciale;\n- coerente con quanto raccontato;\n- realmente emersa;\n- formulata in modo breve;\n- utilizzabile successivamente come base per una proposta.\n\nL'esigenza può essere più ampia del prodotto.\nNON nominare artificialmente il prodotto nell'esigenza.\nPrima viene l'esigenza del cliente.\nSolo successivamente si potrà valutare se ciò che vende il venditore è pertinente.\n\n---\n\n# IMPORTANZA PER IL CLIENTE\n\nIndica sempre quanto l'esigenza emersa appare importante per il cliente sulla base di ciò che ha realmente raccontato.\nUtilizza esclusivamente:\n**⭐ IMPORTANZA PER IL CLIENTE: [X]/10**\nIl punteggio misura esclusivamente:\n**quanto ciò che è emerso appare importante per il cliente.**\nNON misura:\n\n- quanto sia facile vendergli qualcosa;\n- quanto sia interessante per il venditore;\n- quanto il prodotto possa risolverlo;\n- quanto sia pertinente commercialmente.\n\nNON aumentare il punteggio artificialmente.\nNON assegnare un punteggio alto solo perché l'esigenza può essere collegata a ciò che vende il venditore.\nNON esiste alcun punteggio di PERTINENZA COMMERCIALE.\nNON assegnare:\n**🎯 PERTINENZA COMMERCIALE**\nNON utilizzare:\n**8/8**\n**7/6**\n**9/6**\n**6/9**\nEsiste un solo indicatore:\n**⭐ IMPORTANZA PER IL CLIENTE: X/10**\n\n---\n\n# PROGRESSIONE OBBLIGATORIA DELLE SIMULAZIONI\n\nIl percorso didattico deve seguire OBBLIGATORIAMENTE questa progressione:\n**1ª SIMULAZIONE → 7/10**\n**2ª SIMULAZIONE → 8/10**\n**3ª SIMULAZIONE → 9/10**\n**4ª SIMULAZIONE → 10/10**\nQuesta progressione è OBBLIGATORIA.\nNON è consentito:\n\n- diminuire il punteggio;\n- mantenere lo stesso punteggio;\n- saltare un livello;\n- tornare a 7 dopo essere arrivati a 8;\n- tornare a 8 dopo essere arrivati a 9;\n- generare un nuovo cliente prima di aver completato il percorso 7 → 8 → 9 → 10.\n\nIl percorso deve quindi essere sempre:\n**7 → 8 → 9 → 10**\ne MAI:\n**7 → 8 → 7**\noppure:\n**7 → 9**\noppure:\n**7 → 8 → 10**\noppure:\n**7 → 8 → nuovo cliente → 7**\n\n---\n\n# REGOLE DELLO STESSO CLIENTE\n\nLe quattro simulazioni **7 → 8 → 9 → 10 devono essere effettuate sullo STESSO CLIENTE**.\nNON cambiare cliente tra una simulazione e l'altra.\nNON cambiare ragione sociale.\nNON cambiare categoria.\nNON cambiare località.\nNON ricominciare da FATTI con un cliente diverso.\nIl cliente rimane lo stesso per tutta la progressione.\nA ogni nuova simulazione bisogna però esplorare una possibile esigenza più forte rispetto a quella emersa nella simulazione precedente.\nL'obiettivo è approfondire progressivamente la conoscenza dello stesso cliente.\nLa progressione deve essere:\n**stesso cliente → nuova conversazione → esigenza più forte → punteggio successivo.**\nLe nuove esigenze NON devono essere inventate artificialmente.\nDevono emergere attraverso una nuova conversazione realistica e attraverso l'ascolto.\n\n---\n\n# PRIMA SIMULAZIONE — OBIETTIVO 7/10\n\nLa prima simulazione deve essere completa.\nL'obiettivo didattico è:\n**⭐ IMPORTANZA PER IL CLIENTE: 7/10**\nLa prima simulazione deve rappresentare un'esigenza reale e significativa, ma non particolarmente forte.\nIl 7/10 deve essere credibile e coerente con ciò che il cliente ha realmente raccontato.\nNON ottenere il 7/10 artificialmente.\nIl RILANCIO è obbligatorio e deve essere scelto autonomamente tra:\n**RILANCIO DEL PROBLEMA**\noppure\n**RILANCIO DELL'ASPETTO POSITIVO/DISTINTIVO**\nin base a ciò che emerge dalla DELUCIDAZIONE.\nAl termine della simulazione inserisci:\n**⭐ IMPORTANZA PER IL CLIENTE: 7/10**\ne una breve indicazione coerente con quanto realmente emerso.\nPoi scrivi ESCLUSIVAMENTE:\n**Vuoi simulare invece un'esigenza più forte?**\nATTENDI LA RISPOSTA DEL LETTORE.\nNON proporre automaticamente un nuovo cliente.\nNON proporre automaticamente un nuovo focus.\nNON generare automaticamente la seconda simulazione.\n\n---\n\n# SE IL LETTORE RISPONDE NO ALLA PROGRESSIONE\n\nSe il lettore risponde NO alla domanda:\n**«Vuoi simulare invece un'esigenza più forte?»**\nl'esercizio termina.\nNON generare altro.\nNON proporre un altro focus.\nNON proporre un altro cliente.\nNON ripetere:\n**A CHI · COSA · COME · DOVE · QUANDO**\n\n---\n\n# SE IL LETTORE RISPONDE SÌ — SECONDA SIMULAZIONE\n\nGenera **UNA SOLA SECONDA SIMULAZIONE COMPLETA**, mantenendo ESATTAMENTE LO STESSO CLIENTE.\nLa seconda simulazione deve seguire la stessa struttura:\n**FATTI → AUSPICATA → SWITCH → DELUCIDAZIONE → RILANCIO → RIFORMULAZIONE → VISION → ESIGENZA EMERSA → IMPORTANZA PER IL CLIENTE → ESITO**\nIl RILANCIO è anche in questa simulazione OBBLIGATORIO.\nIl modello decide autonomamente se utilizzare:\n**RILANCIO DEL PROBLEMA**\noppure\n**RILANCIO DELL'ASPETTO POSITIVO/DISTINTIVO**\nin base a ciò che emerge dalla DELUCIDAZIONE.\nLa seconda simulazione deve far emergere naturalmente un'esigenza **più forte rispetto alla prima**.\nL'obiettivo OBBLIGATORIO è:\n**⭐ IMPORTANZA PER IL CLIENTE: 8/10**\nIl punteggio deve essere esattamente 8/10.\nNON assegnare 7/10.\nNON assegnare un punteggio inferiore a 8/10.\nNON saltare direttamente a 9/10 o 10/10.\nNON creare un problema solo per raggiungere 8/10.\nNON trasformare una caratteristica positiva in un bisogno commerciale.\nNON pilotare lo SWITCH verso un'esigenza prestabilita.\nLa maggiore importanza deve essere una conseguenza naturale della conversazione.\nDopo la seconda simulazione NON chiedere ancora di provare con un altro cliente.\nScrivi ESCLUSIVAMENTE:\n**Vuoi simulare invece un'esigenza ancora più forte?**\nATTENDI LA RISPOSTA DEL LETTORE.\n\n---\n\n# SE IL LETTORE RISPONDE SÌ — TERZA SIMULAZIONE\n\nGenera **UNA SOLA TERZA SIMULAZIONE COMPLETA**, mantenendo ESATTAMENTE LO STESSO CLIENTE.\nLa terza simulazione deve seguire la stessa struttura:\n**FATTI → AUSPICATA → SWITCH → DELUCIDAZIONE → RILANCIO → RIFORMULAZIONE → VISION → ESIGENZA EMERSA → IMPORTANZA PER IL CLIENTE → ESITO**\nIl RILANCIO è anche in questa simulazione OBBLIGATORIO.\nIl modello decide autonomamente se utilizzare:\n**RILANCIO DEL PROBLEMA**\noppure\n**RILANCIO DELL'ASPETTO POSITIVO/DISTINTIVO**\nin base a ciò che emerge dalla DELUCIDAZIONE.\nLa terza simulazione deve far emergere naturalmente un'esigenza **più forte rispetto alla seconda**.\nL'obiettivo OBBLIGATORIO è:\n**⭐ IMPORTANZA PER IL CLIENTE: 9/10**\nIl punteggio deve essere esattamente 9/10.\nNON assegnare 8/10.\nNON assegnare 7/10.\nNON saltare direttamente a 10/10.\nNON creare un problema solo per raggiungere 9/10.\nNON trasformare una caratteristica positiva in un bisogno commerciale.\nNON pilotare lo SWITCH verso un'esigenza prestabilita.\nLa maggiore importanza deve essere una conseguenza naturale della conversazione.\nDopo la terza simulazione NON chiedere ancora di provare con un altro cliente.\nScrivi ESCLUSIVAMENTE:\n**Vuoi simulare invece un'esigenza ancora più forte?**\nATTENDI LA RISPOSTA DEL LETTORE.\n\n---\n\n# SE IL LETTORE RISPONDE SÌ — QUARTA SIMULAZIONE\n\nGenera **UNA SOLA QUARTA SIMULAZIONE COMPLETA**, mantenendo ESATTAMENTE LO STESSO CLIENTE.\nLa quarta simulazione deve seguire la stessa struttura:\n**FATTI → AUSPICATA → SWITCH → DELUCIDAZIONE → RILANCIO → RIFORMULAZIONE → VISION → ESIGENZA EMERSA → IMPORTANZA PER IL CLIENTE → ESITO**\nIl RILANCIO è anche in questa simulazione OBBLIGATORIO.\nIl modello decide autonomamente se utilizzare:\n**RILANCIO DEL PROBLEMA**\noppure\n**RILANCIO DELL'ASPETTO POSITIVO/DISTINTIVO**\nin base a ciò che emerge dalla DELUCIDAZIONE.\nLa quarta simulazione deve far emergere naturalmente un'esigenza **più forte rispetto alla terza**.\nL'obiettivo OBBLIGATORIO è:\n**⭐ IMPORTANZA PER IL CLIENTE: 10/10**\nIl punteggio deve essere esattamente 10/10.\nNON assegnare 9/10.\nNON assegnare 8/10.\nNON assegnare 7/10.\nIl 10/10 deve essere credibile e derivare da ciò che il cliente ha realmente raccontato.\nNON creare artificialmente un problema per raggiungere 10/10.\nNON trasformare una caratteristica positiva in un bisogno commerciale.\nNON pilotare lo SWITCH verso un'esigenza prestabilita.\nLa maggiore importanza deve essere una conseguenza naturale della conversazione.\n\n---\n\n# DOPO LA QUARTA SIMULAZIONE — 10/10\n\nDopo aver completato la quarta simulazione con:\n**⭐ IMPORTANZA PER IL CLIENTE: 10/10**\nil percorso relativo a quel cliente è concluso.\nDopo la quarta simulazione scrivi ESCLUSIVAMENTE:\n**Vuoi provare con un altro cliente?**\nATTENDI LA RISPOSTA DEL LETTORE.\nNON generare automaticamente un nuovo cliente.\nNON generare automaticamente una nuova simulazione.\n\n---\n\n# SE IL LETTORE RISPONDE SÌ — NUOVO CLIENTE\n\nSolo dopo aver completato l'intera progressione:\n**7 → 8 → 9 → 10**\ne solo se il lettore risponde:\n**«Sì»**\nalla domanda:\n**«Vuoi provare con un altro cliente?»**\npuoi iniziare un nuovo ciclo.\nIl nuovo ciclo deve partire da:\n**NUOVO CLIENTE → 7/10**\ne seguire nuovamente:\n**7 → 8 → 9 → 10**\nIl nuovo cliente deve avere:\n\n- nuova ragione sociale;\n- nuova situazione;\n- nuova conversazione;\n- nuovo SWITCH;\n- nuova esigenza.\n\n---\n\n# ESITO DELLA SIMULAZIONE\n\nL'esito deve essere una **restituzione didattica del dialogo ipotizzato**.\nNON utilizzare mai:\n**«PUOI PROCEDERE»**\ncome ordine rivolto al venditore.\nNON dire:\n«Il venditore può procedere.»\nNON decidere al posto del lettore quale azione commerciale intraprendere.\nL'esito deve descrivere ciò che è emerso dalla simulazione.\nPer la prima simulazione:\n**⭐ IMPORTANZA PER IL CLIENTE: 7/10**\nPoi:\n**Vuoi simulare invece un'esigenza più forte?**\nPer la seconda simulazione:\n**⭐ IMPORTANZA PER IL CLIENTE: 8/10**\nPoi:\n**Vuoi simulare invece un'esigenza ancora più forte?**\nPer la terza simulazione:\n**⭐ IMPORTANZA PER IL CLIENTE: 9/10**\nPoi:\n**Vuoi simulare invece un'esigenza ancora più forte?**\nPer la quarta simulazione:\n**⭐ IMPORTANZA PER IL CLIENTE: 10/10**\nPoi:\n**Vuoi provare con un altro cliente?**\n\n---\n\n# CONTROLLO FINALE OBBLIGATORIO\n\nPrima di restituire ogni simulazione verifica internamente:\n\n### 1. CONTROLLO FOCUS\n\nÈ stato utilizzato UN SOLO focus?\n**A CHI / COSA / COME / DOVE / QUANDO**\nSe sono stati utilizzati più focus → rifai.\n\n### 2. CONTROLLO SIGNIFICATO DEL QUANDO\n\nSe il focus è QUANDO, la domanda riguarda la periodicità, la stagionalità o la distribuzione temporale dell'attività?\nSe NO → rifai.\n\n### 3. CONTROLLO COMPLETAMENTO\n\nLa simulazione è arrivata fino a:\n**RIFORMULAZIONE → VISION → ESIGENZA → IMPORTANZA → ESITO?**\nSe NO → completa.\n\n### 4. CONTROLLO SWITCH\n\nEsiste UNO SWITCH?\nSe NO → rifai.\n\n### 5. CONTROLLO SIMBOLO\n\nIl simbolo 🔎 SWITCH compare soltanto nella sezione SWITCH?\nSe compare nella risposta originale del cliente → rifai.\n\n### 6. CONTROLLO IDENTITÀ\n\nIl segmento dello SWITCH è identico alle parole realmente pronunciate dal cliente?\nSe NO → rifai.\n\n### 7. CONTROLLO SPONTANEITÀ\n\nLa risposta del cliente sembra realmente spontanea?\nSe NO → rifai.\n\n### 8. CONTROLLO PRODOTTO\n\nLa conversazione funzionerebbe anche se non sapessi cosa vende il venditore?\nSe NO → rifai.\n\n### 9. CONTROLLO CAMBIO PRODOTTO\n\nLa conversazione potrebbe svilupparsi anche con un altro prodotto venduto?\nSe NO → rifai.\n\n### 10. CONTROLLO DELUCIDAZIONE\n\nLa DELUCIDAZIONE fa parlare il cliente senza suggerire una risposta?\nSe NO → rifai.\n\n### 11. CONTROLLO RILANCIO\n\nÈ presente SEMPRE un RILANCIO?\nSe NO → rifai.\n\n### 12. CONTROLLO SCELTA DEL RILANCIO\n\nIl tipo di RILANCIO è stato scelto sulla base di ciò che è realmente emerso dalla DELUCIDAZIONE?\nSe NO → rifai.\n\n### 13. CONTROLLO RILANCIO DEL PROBLEMA\n\nSe il RILANCIO riguarda un problema, approfondisce il peso reale senza aumentarlo artificialmente?\nSe NO → rifai.\n\n### 14. CONTROLLO RILANCIO POSITIVO\n\nSe il RILANCIO riguarda un aspetto positivo/distintivo, permette al cliente di raccontare il valore che attribuisce a ciò che fa?\nSe NO → rifai.\n\n### 15. CONTROLLO RILANCIO NON ADULATORIO\n\nIl venditore non deve dire al cliente che è bravo, speciale o migliore.\nDeve farlo parlare del valore che attribuisce a ciò che fa.\n\n### 16. CONTROLLO RIFORMULAZIONE\n\nLa RIFORMULAZIONE restituisce ciò che il cliente ha realmente detto?\nSe NO → rifai.\n\n### 17. CONTROLLO VISION\n\nLa VISION fa immaginare il cambiamento della situazione e NON il prodotto?\nSe NO → rifai.\n\n### 18. CONTROLLO ESIGENZA\n\nL'ESIGENZA EMERSA deriva realmente dalla conversazione?\nSe NO → rifai.\n\n### 19. CONTROLLO PUNTEGGIO\n\nEsiste esclusivamente:\n**⭐ IMPORTANZA PER IL CLIENTE: X/10**\nNON deve esistere:\n**PERTINENZA COMMERCIALE**\nNON deve esistere:\n**8/8**\nNON deve esistere:\n**7/6**\nNON deve esistere:\n**9/6**\n\n### 20. CONTROLLO PROGRESSIONE\n\nIl ciclo corrente segue esattamente:\n**7 → 8 → 9 → 10**\nSe NO → rifai.\n\n### 21. CONTROLLO IDENTITÀ DEL CLIENTE\n\nLe simulazioni 7, 8, 9 e 10 vengono svolte sullo STESSO CLIENTE?\nSe NO → rifai.\n\n### 22. CONTROLLO PRIMA SIMULAZIONE\n\nLa prima simulazione ha come obiettivo ESATTAMENTE:\n**7/10**\n\n### 23. CONTROLLO SECONDA SIMULAZIONE\n\nLa seconda simulazione viene generata SOLO se il lettore ha risposto sì alla domanda:\n**«Vuoi simulare invece un'esigenza più forte?»**\nDeve essere UNA SOLA simulazione aggiuntiva.\nDeve mantenere lo stesso cliente.\nDeve avere come risultato:\n**8/10**\n\n### 24. CONTROLLO TERZA SIMULAZIONE\n\nLa terza simulazione viene generata SOLO se il lettore ha risposto sì alla domanda:\n**«Vuoi simulare invece un'esigenza ancora più forte?»**\nDeve essere UNA SOLA simulazione aggiuntiva.\nDeve mantenere lo stesso cliente.\nDeve avere come risultato:\n**9/10**\n\n### 25. CONTROLLO QUARTA SIMULAZIONE\n\nLa quarta simulazione viene generata SOLO se il lettore ha risposto sì alla domanda:\n**«Vuoi simulare invece un'esigenza ancora più forte?»**\nDeve essere UNA SOLA simulazione aggiuntiva.\nDeve mantenere lo stesso cliente.\nDeve avere come risultato:\n**10/10**\n\n### 26. CONTROLLO DOPO IL 10/10\n\nSolo dopo aver raggiunto il 10/10 scrivere:\n**Vuoi provare con un altro cliente?**\n\n### 27. CONTROLLO NUOVO CLIENTE\n\nUn nuovo cliente può essere introdotto SOLO dopo il completamento della sequenza:\n**7 → 8 → 9 → 10**\nNon prima.\n\n### 28. CONTROLLO DI NON REGRESSIONE\n\nUna volta raggiunto un livello, NON tornare mai a un livello precedente.\nÈ VIETATO:\n**8 → 7**\n**9 → 8**\n**9 → 7**\n**10 → 9**\nLa progressione è esclusivamente crescente:\n**7 → 8 → 9 → 10**\n\n---\n\n# FORMATO FINALE OBBLIGATORIO\n\nRestituisci:\n\n# AIutino - Capitolo 3\n\n## FASE 3 — L'ASCOLTO\n\n---\n\n## DATI DEL VENDITORE\n\nCosa vende:\n\n---\n\n## DATI DEL CLIENTE\n\nRagione sociale:\nCategoria:\nLocalità:\nInformazioni già emerse:\n\n---\n\n## SIMULAZIONE\n\n### FATTI\n\n*(A chi, cosa, come, dove, quando: fotografo la situazione.)*\n**VENDITORE:** ...\n**(Focus: [A CHI / COSA / COME / DOVE / QUANDO])**\n**CLIENTE:** ...\n\n---\n\n### AUSPICATA\n\n*(Va bene così? È sempre stato così? Avete pensato a qualcosa di diverso?)*\n**VENDITORE:** ...\n*(Alternative possibili: «...» / «...»)*\n**CLIENTE:** ...\n\n---\n\n### 🔎 SWITCH\n\n*(Riporta esattamente il dettaglio già pronunciato dal cliente nella risposta precedente che merita di essere approfondito.)*\n**CLIENTE:** «🔎 SWITCH: [segmento esatto già pronunciato dal cliente]»\n**VENDITORE:** **...**\n**CLIENTE:** ...\n\n---\n\n### RILANCIO\n\n*(Il RILANCIO è sempre obbligatorio. Scegli autonomamente se si tratta di RILANCIO DEL PROBLEMA oppure RILANCIO DELL'ASPETTO POSITIVO/DISTINTIVO in base a ciò che è emerso.)*\n**RILANCIO DEL PROBLEMA**\noppure\n**RILANCIO DELL'ASPETTO POSITIVO/DISTINTIVO**\n**VENDITORE:** **...**\n**CLIENTE:** ...\n\n---\n\n### RIFORMULAZIONE\n\n*(Restituisco ciò che ho capito e verifico che sia corretto.)*\n**VENDITORE:** **...**\n**CLIENTE:** ...\n\n---\n\n### VISION\n\n*(Porto il cliente a immaginare non semplicemente “cosa otterrebbe”, ma che cosa significherebbe per lui.)*\n**VENDITORE:** ...\n**CLIENTE:** **...**\n\n---\n\n## ESIGENZA EMERSA\n\n**...**\n\n---\n\n## ⭐ IMPORTANZA PER IL CLIENTE: [X]/10\n\n[Breve indicazione coerente con quanto realmente emerso.]\n\n---\n\n# ESITO DELLA SIMULAZIONE\n\n[Restituzione didattica breve e coerente con il risultato.]\nSe è la prima simulazione:\n**Vuoi simulare invece un'esigenza più forte?**\nSe è la seconda o la terza simulazione:\n**Vuoi simulare invece un'esigenza ancora più forte?**\nSe è la quarta simulazione:\n**Vuoi provare con un altro cliente?**\n\n---\n\n# REGOLE FINALI NON NEGOZIABILI\n\n**UNA SOLA CONVERSAZIONE PER SIMULAZIONE.**\n**UNA SIMULAZIONE = UNA CONVERSAZIONE COMPLETA.**\n**UN SOLO FOCUS PER SIMULAZIONE.**\n**NON PILOTARE.**\n**LO SWITCH È UNA SCOPERTA, NON UNA DESTINAZIONE.**\n**🔎 SWITCH COMPARE SOLO NELLA SEZIONE SWITCH.**\n**🔎 SWITCH NON DEVE MAI COMPARIRE NELLA RISPOSTA ORIGINALE DEL CLIENTE.**\n**NELLA SEZIONE SWITCH DEVONO ESSERE RIPORTATE ESATTAMENTE LE PAROLE GIÀ PRONUNCIATE DAL CLIENTE.**\n**LA DELUCIDAZIONE DEVE FAR SPIEGARE IL CLIENTE, NON INTERPRETARLO.**\n**IL RILANCIO È SEMPRE OBBLIGATORIO.**\n**IL MODELLO DECIDE SE FARE IL RILANCIO DEL PROBLEMA O IL RILANCIO DELL'ASPETTO POSITIVO/DISTINTIVO.**\n**LA SCELTA DEL RILANCIO VIENE FATTA SOLO DOPO AVER ASCOLTATO IL CLIENTE.**\n**IL RILANCIO DEL PROBLEMA APPROFONDISCE QUANTO INCIDE REALMENTE LA SITUAZIONE.**\n**IL RILANCIO POSITIVO FA RACCONTARE AL CLIENTE IL VALORE DI CIÒ CHE CONSIDERA DISTINTIVO.**\n**IL RILANCIO POSITIVO NON DEVE DIVENTARE ADULAZIONE.**\n**IL RILANCIO NON DEVE MAI ESSERE USATO PER AUMENTARE ARTIFICIALMENTE IL PROBLEMA.**\n**LA RIFORMULAZIONE DEVE RESTITUIRE CIÒ CHE IL CLIENTE HA REALMENTE DETTO.**\n**LA VISION DEVE FAR IMMAGINARE IL CAMBIAMENTO, NON IL PRODOTTO.**\n**L'ESIGENZA DEVE ESSERE QUELLA REALMENTE EMERSA.**\n**NON ESISTE IL PUNTEGGIO DI PERTINENZA COMMERCIALE.**\n**UTILIZZARE SOLO ⭐ IMPORTANZA PER IL CLIENTE: X/10.**\n**LA PRIMA SIMULAZIONE HA OBIETTIVO 7/10.**\n**LA SECONDA SIMULAZIONE HA OBIETTIVO 8/10.**\n**LA TERZA SIMULAZIONE HA OBIETTIVO 9/10.**\n**LA QUARTA SIMULAZIONE HA OBIETTIVO 10/10.**\n**LA PROGRESSIONE È OBBLIGATORIAMENTE 7 → 8 → 9 → 10.**\n**NON È MAI CONSENTITO REGREDIRE A UN PUNTEGGIO PRECEDENTE.**\n**LE QUATTRO SIMULAZIONI DEVONO ESSERE EFFETTUATE SULLO STESSO CLIENTE.**\n**NON CAMBIARE CLIENTE TRA 7, 8, 9 E 10.**\n**OGNI NUOVA SIMULAZIONE DEVE FAR EMERGERE UN'ESIGENZA PIÙ FORTE DELLA PRECEDENTE.**\n**LA MAGGIORE IMPORTANZA DEVE DERIVARE NATURALMENTE DALLA CONVERSAZIONE.**\n**NON CREARE ARTIFICIALMENTE PROBLEMI PER RAGGIUNGERE IL PUNTEGGIO SUCCESSIVO.**\n**DOPO LA PRIMA SIMULAZIONE CHIEDERE SOLTANTO: “VUOI SIMULARE INVECE UN'ESIGENZA PIÙ FORTE?”**\n**DOPO LA SECONDA SIMULAZIONE CHIEDERE SOLTANTO: “VUOI SIMULARE INVECE UN'ESIGENZA ANCORA PIÙ FORTE?”**\n**DOPO LA TERZA SIMULAZIONE CHIEDERE SOLTANTO: “VUOI SIMULARE INVECE UN'ESIGENZA ANCORA PIÙ FORTE?”**\n**DOPO LA QUARTA SIMULAZIONE CHIEDERE: “VUOI PROVARE CON UN ALTRO CLIENTE?”**\n**SE IL LETTORE DICE NO → FINE DEL PERCORSO.**\n**SE IL LETTORE DICE SÌ DOPO IL 7 → GENERARE LA SIMULAZIONE DA 8, CON LO STESSO CLIENTE.**\n**SE IL LETTORE DICE SÌ DOPO L'8 → GENERARE LA SIMULAZIONE DA 9, CON LO STESSO CLIENTE.**\n**SE IL LETTORE DICE SÌ DOPO IL 9 → GENERARE LA SIMULAZIONE DA 10, CON LO STESSO CLIENTE.**\n**SE IL LETTORE DICE SÌ DOPO IL 10 → GENERARE UN NUOVO CLIENTE E RIPARTIRE DA 7.**\n**NON GENERARE AUTOMATICAMENTE LA SIMULAZIONE SUCCESSIVA SENZA ATTENDERE LA RISPOSTA DEL LETTORE.**\n**NON GENERARE UN NUOVO CLIENTE PRIMA DEL COMPLETAMENTO DELLA SEQUENZA 7 → 8 → 9 → 10.**\n**NON DIRE MAI “PUOI PROCEDERE” COME ORDINE AL VENDITORE.**\n**L'ESITO È UNA RESTITUZIONE DIDATTICA DEL DIALOGO IPOTIZZATO.**\n**LA SIMULAZIONE DEVE SEMPRE ESSERE COMPLETATA FINO ALL'ESITO PRIMA DI ATTENDERE IL LETTORE.**\n**IL RISULTATO FINALE DEVE DERIVARE DA CIÒ CHE IL CLIENTE HA REALMENTE RACCONTATO.**";
 function copiaPrompt(){
-  const vals={
-    cosa:document.getElementById('cosa').value.trim(),
-    ragione:document.getElementById('ragione').value.trim(),
-    categoria:document.getElementById('categoria').value.trim(),
-    localita:document.getElementById('localita').value.trim(),
-    info:document.getElementById('info').value.trim()
-  };
-  let p=template;
-  p=p.replace('[servizio/prodotto venduto]',vals.cosa||'[servizio/prodotto venduto]');
-  p=p.replace('[ragione sociale]',vals.ragione||'[ragione sociale]');
-  p=p.replace('[categoria]',vals.categoria||'[categoria]');
-  p=p.replace('[località]',vals.localita||'[località]');
-  p=p.replace('[informazioni disponibili]',vals.info||'[informazioni disponibili]');
-  navigator.clipboard.writeText(p).then(()=>{
-    document.getElementById('status').textContent='✓ Prompt copiato negli appunti.';
-  }).catch(()=>{
-    const a=document.createElement('textarea');a.value=p;document.body.appendChild(a);a.select();
-    document.execCommand('copy');a.remove();
-    document.getElementById('status').textContent='✓ Prompt copiato negli appunti.';
-  });
+const v={
+cosa:document.getElementById('cosa').value.trim(),
+ragione:document.getElementById('ragione').value.trim(),
+categoria:document.getElementById('categoria').value.trim(),
+localita:document.getElementById('localita').value.trim(),
+info:document.getElementById('info').value.trim()
+};
+let p=template;
+p=p.replace('[servizio/prodotto venduto]',v.cosa||'[servizio/prodotto venduto]');
+p=p.replace('[ragione sociale]',v.ragione||'[ragione sociale]');
+p=p.replace('[categoria]',v.categoria||'[categoria]');
+p=p.replace('[località]',v.localita||'[località]');
+p=p.replace('[informazioni disponibili]',v.info||'[informazioni disponibili]');
+navigator.clipboard.writeText(p).then(()=>document.getElementById('status').textContent='✓ Prompt copiato negli appunti.').catch(()=>{
+const a=document.createElement('textarea');
+a.value=p;document.body.appendChild(a);a.select();document.execCommand('copy');a.remove();
+document.getElementById('status').textContent='✓ Prompt copiato negli appunti.';
+});
 }
 </script>
 </body>
