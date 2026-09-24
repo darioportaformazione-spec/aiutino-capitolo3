@@ -98,6 +98,12 @@ summary::-webkit-details-marker{display:none}
   .prompt{font-size:10.5px;padding:11px;margin:0 8px 8px}
   .note{font-size:9.5px;margin-top:10px}
 }
+
+details{margin-top:24px;background:#f3f4f6;border-radius:14px;overflow:hidden}
+details summary{cursor:pointer;padding:22px 28px;font-size:22px;font-weight:800;color:#111;list-style:none}
+details summary::-webkit-details-marker{display:none}
+details[open] summary{border-bottom:1px solid #ddd}
+.prompt{margin:0;padding:24px;background:#fafafa;color:#222;font:15px/1.55 Arial,sans-serif;white-space:pre-wrap;word-break:break-word;max-height:600px;overflow:auto}
 </style>
 </head>
 <body>
@@ -1294,17 +1300,20 @@ function refresh() { preview.textContent = getPrompt(); }
 Object.values(fields).forEach(el => el.addEventListener('input', refresh));
 
 btn.addEventListener('click', async () => {
-  if (!fields.io.value.trim() || !fields.cliente.value.trim() || !fields.preparato.value.trim()) {
-    alert('Inserisci almeno IO, POTENZIALE CLIENTE e COSA HO PREPARATO PER LUI.');
-    return;
-  }
   const p = getPrompt();
+  refresh();
   try {
     await navigator.clipboard.writeText(p);
   } catch(e) {
     const t = document.createElement('textarea');
-    t.value = p; document.body.appendChild(t); t.select();
-    document.execCommand('copy'); t.remove();
+    t.value = p;
+    t.style.position = 'fixed';
+    t.style.left = '-9999px';
+    document.body.appendChild(t);
+    t.focus();
+    t.select();
+    document.execCommand('copy');
+    t.remove();
   }
   btn.textContent = '✓  PROMPT COPIATO';
   setTimeout(() => btn.textContent = '▣  PREPARA E COPIA IL PROMPT', 1800);
