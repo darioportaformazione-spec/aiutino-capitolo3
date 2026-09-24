@@ -134,27 +134,14 @@ summary::-webkit-details-marker{display:none}
   </div>
 
   <div class="card green">
-    <div class="row"><div class="small-icon">▦</div><div>
-      <label for="ragione">RAGIONE SOCIALE CLIENTE</label>
-      <span class="help">Ragione sociale del cliente.</span>
-    </div></div>
-    <input id="ragione" type="text" placeholder="Ragione sociale del cliente.">
-  </div>
-
-  <div class="card green">
-    <div class="row"><div class="small-icon">⌂</div><div>
-      <label for="categoria">CATEGORIA</label>
-      <span class="help">Categoria del cliente.</span>
-    </div></div>
-    <input id="categoria" type="text" placeholder="Categoria del cliente.">
-  </div>
-
-  <div class="card green">
-    <div class="row"><div class="small-icon">⌖</div><div>
-      <label for="localita">LOCALITÀ</label>
-      <span class="help">Località del cliente.</span>
-    </div></div>
-    <input id="localita" type="text" placeholder="Località del cliente.">
+    <div class="row">
+      <div class="small-icon">▦</div>
+      <div>
+        <label for="cliente">POTENZIALE CLIENTE</label>
+        <span class="help">Ragione sociale, categoria e località del potenziale cliente.</span>
+      </div>
+    </div>
+    <input id="cliente" type="text" placeholder="Ragione sociale, categoria e località">
   </div>
 
   <div class="card purple">
@@ -1288,20 +1275,19 @@ Se è la quarta simulazione:
 **IL RISULTATO FINALE DEVE DERIVARE DA CIÒ CHE IL CLIENTE HA REALMENTE RACCONTATO.**";
 const fields = {
   cosa: document.getElementById('cosa'),
-  ragione: document.getElementById('ragione'),
-  categoria: document.getElementById('categoria'),
-  localita: document.getElementById('localita'),
+  cliente: document.getElementById('cliente'),
   informazioni: document.getElementById('informazioni')
 };
 const preview = document.getElementById('preview');
 const btn = document.getElementById('copyBtn');
 
 function getPrompt() {
+  const cliente = fields.cliente.value.trim() || '[DA INSERIRE RAGIONE SOCIALE, CATEGORIA E LOCALITÀ]';
   return template
     .replaceAll('[COSA_VENDE]', fields.cosa.value.trim() || '[DA INSERIRE]')
-    .replaceAll('[RAGIONE_SOCIALE]', fields.ragione.value.trim() || '[DA INSERIRE]')
-    .replaceAll('[CATEGORIA]', fields.categoria.value.trim() || '[DA INSERIRE]')
-    .replaceAll('[LOCALITA]', fields.localita.value.trim() || '[DA INSERIRE]')
+    .replaceAll('[RAGIONE_SOCIALE]', cliente)
+    .replaceAll('[CATEGORIA]', cliente)
+    .replaceAll('[LOCALITA]', cliente)
     .replaceAll('[INFORMAZIONI]', fields.informazioni.value.trim() || '[NESSUNA INFORMAZIONE INSERITA]');
 }
 function refresh() { preview.textContent = getPrompt(); }
